@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../provider/language/app_localizations.dart';
-import '../../provider/language/language_provider.dart';
+
+import 'provider/language/app_localizations.dart';
+import 'provider/language/language_provider.dart';
 
 class Splash extends StatefulWidget {
 
@@ -47,7 +48,7 @@ class _SplashState extends State<Splash> {
                             Navigator.pop(context);
                           }
                         },
-                        items: [
+                        items: const [
                           DropdownMenuItem(
                             child: Text("English"),
                             value: Locale("en", "US"),

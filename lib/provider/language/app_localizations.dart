@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'language_provider.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class AppLocalizations {
@@ -20,7 +20,6 @@ class AppLocalizations {
       "es": "En espagne bienvenue",
       "de": "en de bienv",
     },
-    // Ajoutez d'autres traductions de la même manière
   };
 
   String translate(String key) {
@@ -29,7 +28,7 @@ class AppLocalizations {
     if (_translations.containsKey(key) && _translations[key]!.containsKey(languageCode)) {
       return _translations[key]![languageCode]!;
     } else {
-      return key; // Retourne la clé elle-même si la traduction n'est pas trouvée
+      return key;
     }
   }
 }
