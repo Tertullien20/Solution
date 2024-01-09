@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:solution/view/widgets/button.dart';
 
 class FirstView extends StatefulWidget {
   const FirstView({Key? key}) : super(key: key);
@@ -20,26 +21,15 @@ class _FirstViewState extends State<FirstView> {
             fit: BoxFit.cover,
           ),
 
-          const Align(
+           Align(
             alignment: Alignment.bottomCenter,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                Text(
-                  'Bienvenue',
-                  style: TextStyle(
-                    fontSize: 24,
-                    color: Colors.white,
-                  ),
-                ),
-                Text(
-                  'Bienvenue',
-                  style: TextStyle(
-                    fontSize: 24,
-                    color: Colors.white,
-                  ),
-                ),
-                // Ajoutez d'autres widgets comme vous en avez besoin
+              children: [
+               Padding(
+                 padding: const EdgeInsets.all(20.0),
+                 child: button('GET STARTED'),
+               )
               ],
             ),
           ),
