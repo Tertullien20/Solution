@@ -20,18 +20,26 @@ class _FirstViewState extends State<FirstView> {
             'imgs/splash_screen.jpg',
             fit: BoxFit.cover,
           ),
-           Align(
+          Align(
             alignment: Alignment.bottomCenter,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-               Padding(
-                 padding: const EdgeInsets.only(left: 15.0, right: 15.0, top: 10.0, bottom: 10.0),
-                 child: button('GET STARTED'),
-               ), 
                 Padding(
-                  padding: const EdgeInsets.only(left: 15.0, right: 15.0, top: 10.0, bottom: 10.0),
-                  child: button("ALREADY HAVE AN ACCOUNT?", bgColor: Colors.transparent, borderColor: white),
+                  padding: const EdgeInsets.only(
+                      left: 15.0, right: 15.0, top: 10.0, bottom: 150.0),
+                  child: button('English', bgColor: tertiary, borderColor: transparent),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                      left: 15.0, right: 15.0, top: 10.0, bottom: 10.0),
+                  child: button('GET STARTED'),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                      left: 15.0, right: 15.0, top: 10.0, bottom: 10.0),
+                  child: button("ALREADY HAVE AN ACCOUNT?",
+                      bgColor: transparent, borderColor: white),
                 )
               ],
             ),
