@@ -58,6 +58,6 @@ InputDecoration textFieldDecoration(String hintText,
 
 InputBorder textFieldBorder() {
   return const OutlineInputBorder(
-      borderSide: BorderSide(color: Color(0xffF4F6F8)),
+     borderSide: BorderSide(width: 2.0),
       borderRadius: BorderRadius.all(Radius.circular(8.0)));
 }

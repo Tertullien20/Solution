@@ -1,9 +1,8 @@
-import 'package:solution/view/widgets/button.dart';
-
 import '../widgets/input.dart';
 import '../widgets/space.dart';
 import '../widgets/text.dart';
 import 'package:flutter/material.dart';
+import 'package:solution/view/widgets/button.dart';
 import 'package:solution/utils/constants/colors.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -15,7 +14,8 @@ class DefineLanguage extends StatefulWidget {
 }
 
 class _DefineLanguageState extends State<DefineLanguage> {
-  final mtnMobileController = TextEditingController();
+  final controller = TextEditingController();
+
   int selectedOptionIndex = -1;
 
   @override
@@ -55,8 +55,9 @@ class _DefineLanguageState extends State<DefineLanguage> {
                       text("Select a language to get started.", color: white, size: 16.0),
                     ],
                   ),
-                  buildSelectableItem("*** *** *** 975", 0, mtnMobileController),
-
+                  buildSelectableItem("United Kingdom (British)", "imgs/avatar.png",  0, controller),
+                  buildSelectableItem("Spanish (Espanol)", "imgs/avatar.png",  1, controller),
+                  buildSelectableItem("France (French)", "imgs/avatar.png",  2, controller),
                   Expanded(child: Container()),
                 ],
               ),
@@ -71,7 +72,7 @@ class _DefineLanguageState extends State<DefineLanguage> {
     );
   }
 
-  Widget buildSelectableItem(String text, int index, mtnMobileController) {
+  Widget buildSelectableItem(String text, String path, int index, controller) {
 
     return GestureDetector(
       onTap: () {
@@ -82,12 +83,12 @@ class _DefineLanguageState extends State<DefineLanguage> {
       },
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: input(mtnMobileController,
-            colorBorder: white,
+        child: input(controller,
+            colorBorder: grey,
             enabled: false,
-            decoration: textFieldDecoration("United Kingdom (British)", colorHint: white, prefixIcon: Padding(
+            decoration: textFieldDecoration(text, colorHint: white, prefixIcon: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Image.asset('imgs/avatar.png', width: 6, height: 6),
+              child: Image.asset(path, width: 6, height: 6),
             ), filled: false)),
       ),
     );
