@@ -33,6 +33,7 @@ class MyApp extends StatelessWidget {
       ),
       locale: context.watch<LanguageProvider>().locale,
       home:  const Splash(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

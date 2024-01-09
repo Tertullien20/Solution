@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import '../../provider/language/app_localizations.dart';
-import '../../provider/language/language_provider.dart';
+import 'package:solution/view/apps/first.dart';
 
 class Splash extends StatefulWidget {
 
@@ -12,69 +10,26 @@ class Splash extends StatefulWidget {
 }
 
 class _SplashState extends State<Splash> {
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed( const Duration(seconds: 4),
+            ()=> Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder:(context) => const FirstView()), (route) => false));
+  }
+
   @override
   Widget build(BuildContext context) {
-    // Obtain the current locale from the LanguageProvider
-    Locale currentLocale = context.watch<LanguageProvider>().locale;
 
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              AppLocalizations(context).translate("hello_text"),
-              style: TextStyle(fontSize: 18),
-            ),
-            Text(
-              AppLocalizations(context).translate("welcome_message"),
-              style: TextStyle(fontSize: 16),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                // Show a language selection dialog
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return AlertDialog(
-                      title: Text("Change Language"),
-                      content: DropdownButton<Locale>(
-                        value: currentLocale,
-                        onChanged: (Locale? locale) {
-                          if (locale != null) {
-                            // Vérifiez que 'locale' est une des options valides dans votre menu déroulant
-                            context.read<LanguageProvider>().changeLanguage(locale);
-                            Navigator.pop(context);
-                          }
-                        },
-                        items: [
-                          DropdownMenuItem(
-                            child: Text("English"),
-                            value: Locale("en", "US"),
-                          ),
-                          DropdownMenuItem(
-                            child: Text("Français"),
-                            value: Locale("fr", "FR"),
-                          ),
-                          DropdownMenuItem(
-                            child: Text("Español"),
-                            value: Locale("es", "ES"),
-                          ),
-                          DropdownMenuItem(
-                            child: Text("Allemand"),
-                            value: Locale("de", "DE"),
-                          ),
-                        ],
-                      ),
-                    );
-                  },
-                );
-              },
-              child: Text("Change Language"),
-            ),
-          ],
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('imgs/splash_screen.jpg'),
+            fit: BoxFit.cover,
+          ),
         ),
-      ),
+      )
     );
   }
 }
