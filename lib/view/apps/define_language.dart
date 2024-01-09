@@ -1,5 +1,6 @@
 import 'package:solution/view/widgets/button.dart';
 
+import '../widgets/input.dart';
 import '../widgets/space.dart';
 import '../widgets/text.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,9 @@ class DefineLanguage extends StatefulWidget {
 }
 
 class _DefineLanguageState extends State<DefineLanguage> {
+  final mtnMobileController = TextEditingController();
+  int selectedOptionIndex = -1;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,6 +55,8 @@ class _DefineLanguageState extends State<DefineLanguage> {
                       text("Select a language to get started.", color: white, size: 16.0),
                     ],
                   ),
+                  buildSelectableItem("*** *** *** 975", 0, mtnMobileController),
+
                   Expanded(child: Container()),
                 ],
               ),
@@ -61,6 +67,28 @@ class _DefineLanguageState extends State<DefineLanguage> {
            child: button("CONFIRM", bgColor: primary),
          )
         ],
+      ),
+    );
+  }
+
+  Widget buildSelectableItem(String text, int index, mtnMobileController) {
+
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          selectedOptionIndex = index;
+         // Navigator.pushNamed(context, insertAmountRoute);
+        });
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: input(mtnMobileController,
+            colorBorder: white,
+            enabled: false,
+            decoration: textFieldDecoration("United Kingdom (British)", colorHint: white, prefixIcon: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Image.asset('imgs/avatar.png', width: 6, height: 6),
+            ), filled: false)),
       ),
     );
   }
