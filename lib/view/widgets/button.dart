@@ -4,15 +4,15 @@ import 'package:flutter/material.dart';
 import '../../utils/constants/colors.dart';
 
 TextButton button(label,
-    {bool loading = false, onTap, Color colorLoader = primary, width}) {
+    {bool loading = false, onTap, Color colorLoader = primary, width, Color bgColor = secondary, Color borderColor = secondary}) {
   return TextButton(
     style: ButtonStyle(
-        textStyle: MaterialStateProperty.all(const TextStyle(color: secondary)),
-        backgroundColor: MaterialStateProperty.all(secondary),
+        textStyle: MaterialStateProperty.all(TextStyle(color: borderColor)),
+        backgroundColor: MaterialStateProperty.all(bgColor),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15.0),
-                side: const BorderSide(color: secondary)))),
+                side: BorderSide(color: borderColor)))),
     onPressed: onTap,
     child: Container(
       width: width,
