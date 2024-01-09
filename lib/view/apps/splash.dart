@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:solution/view/apps/first.dart';
 
+import '../widgets/bg_view.dart';
+
 class Splash extends StatefulWidget {
 
   @override
@@ -20,16 +22,8 @@ class _SplashState extends State<Splash> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('imgs/splash_screen.jpg'),
-            fit: BoxFit.cover,
-          ),
-        ),
-      )
+      body: bgView()
     );
   }
 }
