@@ -73,6 +73,9 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - imgs/avatar.png
+    - imgs/flag_french.png
+    - imgs/flag_spanish.png
+    - imgs/flag_english.png
     - imgs/splash_screen.jpg
   #   - images/a_dot_ham.jpeg
 
