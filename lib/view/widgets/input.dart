@@ -11,7 +11,7 @@ Widget input(TextEditingController controller,
     bool enabled = true,
     colorBorder = secondary, colorFont}) {
   return Container(
-    padding: const EdgeInsets.all(4.0),
+    //padding: const EdgeInsets.all(4.0),
       decoration: BoxDecoration(
         color: colorFont,
         borderRadius: BorderRadius.circular(7.0),
