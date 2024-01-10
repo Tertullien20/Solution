@@ -58,7 +58,7 @@ class _SigninViewState extends State<SigninView> {
                       boldText(
                           AppLocalizations(context).translate("enter_address"),
                           color: white,
-                          size: 32.0,
+                          size: 30.0,
                           align: TextAlign.start),
                     ],
                   ),

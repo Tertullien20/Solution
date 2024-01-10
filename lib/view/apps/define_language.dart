@@ -52,7 +52,7 @@ class _DefineLanguageState extends State<DefineLanguage> {
                   Row(
                     children: [
                       boldText(AppLocalizations(context).translate("what_your_language"),
-                          color: white, size: 32.0, align: TextAlign.start),
+                          color: white, size: 30.0, align: TextAlign.start),
                     ],
                   ),
                   space(h: 10.0),

@@ -58,7 +58,7 @@ class _LoginViewState extends State<LoginView> {
                   Row(
                     children: [
                       boldText(AppLocalizations(context).translate("welcome_back"),
-                          color: white, size: 32.0, align: TextAlign.start),
+                          color: white, size: 30.0, align: TextAlign.start),
                     ],
                   ),
                   space(h: 20.0),
