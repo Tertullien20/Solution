@@ -12,6 +12,8 @@ import '../../widgets/text.dart';
 import '../../../provider/language/app_localizations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../profile/my_dash_board.dart';
+
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
 
@@ -99,8 +101,8 @@ class _LoginViewState extends State<LoginView> {
                     padding: const EdgeInsets.only(
                         left: 15.0, right: 15.0, top: 10.0, bottom: 10.0),
                     child: button("SIGN IN", bgColor: primary, onTap: () {
-                     /* Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => const MyDashBoard()()));*/
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) =>  const MyDashBoard()));
                     }),
                   ),
                   Expanded(child: Container()),

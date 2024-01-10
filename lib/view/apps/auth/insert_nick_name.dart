@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:solution/view/apps/profile/my_dash_board.dart';
 import 'package:solution/view/widgets/button.dart';
 import 'package:solution/utils/constants/colors.dart';
 import 'package:solution/view/widgets/input.dart';
@@ -90,9 +91,9 @@ class _InsertNickNameState extends State<InsertNickName> {
           Padding(
             padding: const EdgeInsets.only(
                 left: 15.0, right: 15.0, top: 10.0, bottom: 10.0),
-            child: button("SIGN IN", bgColor: primary, onTap: () {
-              /*Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const InsetNickName()));*/
+            child: button("CONTINUE", bgColor: primary, onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const MyDashBoard()));
             }),
           )
         ],
