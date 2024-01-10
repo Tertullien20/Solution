@@ -55,16 +55,10 @@ class _LoginViewState extends State<LoginView> {
                           color: white, size: 32.0, align: TextAlign.start),
                     ],
                   ),
-                  space(h: 10.0),
-                  Row(
-                    children: [
-                      text(AppLocalizations(context).translate("select_lang"),
-                          color: white, size: 16.0),
-                    ],
-                  ),
-                  space(h: 20.0),
+
                   input(mailController),
                   input(passController),
+                  buildInput("text",mailController),
                   Padding(
                     padding: const EdgeInsets.only(
                         left: 15.0, right: 15.0, top: 10.0, bottom: 10.0),
@@ -80,11 +74,24 @@ class _LoginViewState extends State<LoginView> {
           ),
           Padding(
             padding: const EdgeInsets.only(
-                left: 15.0, right: 15.0, top: 10.0, bottom: 10.0),
+                left: 15.0, right: 15.0, top: 10.0, bottom: 40.0),
             child: text( AppLocalizations(context).translate("have_account"), color: white),
           )
         ],
       ),
     );
-  } 
+  }
+
+  Widget buildInput(String text, mtnMobileController) {
+
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: input(mtnMobileController,
+          colorBorder: primary, colorFont: fillGrey,
+          decoration: textFieldDecoration(text, colorHint: secondary,  prefixIcon: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Icon(Icons.lock_outline, color: grey),
+          ), filled: false, suffixIcon: Icon(Icons.remove_red_eye, color: grey))),
+    );
+  }
 }

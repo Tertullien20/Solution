@@ -9,10 +9,10 @@ Widget input(TextEditingController controller,
     int? maxLines,
     onChanged,
     bool enabled = true,
-    colorBorder = secondary}) {
+    colorBorder = secondary, colorFont}) {
   return Container(
       decoration: BoxDecoration(
-        //color: white,
+        color: colorFont,
         borderRadius: BorderRadius.circular(7.0),
         border: Border.all(color: colorBorder, width: 2.0),
       ),

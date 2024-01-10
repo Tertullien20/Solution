@@ -6,3 +6,4 @@ const Color primary = Color(0xFF0069E6);
 const Color tertiary = Color(0xFF3381E1);
 const Color white = Color(0xFFF9FBFE);
 const Color grey = Color(0xFF424C62);
+const Color fillGrey = Color(0xFF283042);
