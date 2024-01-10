@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       title: 'The Solution Web Mobile Application Open Source Project Competition Rules and Guidelines',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: primary),
-        useMaterial3: true,
+       // useMaterial3: true,
       ),
       locale: context.watch<LanguageProvider>().locale,
       home:  const Splash(),

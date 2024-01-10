@@ -6,6 +6,8 @@ import 'package:solution/view/widgets/button.dart';
 import 'package:solution/utils/constants/colors.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import 'auth/login.dart';
+
 class DefineLanguage extends StatefulWidget {
   const DefineLanguage({super.key});
 
@@ -65,7 +67,9 @@ class _DefineLanguageState extends State<DefineLanguage> {
           ),
          Padding(
            padding: const EdgeInsets.only(left: 15.0, right: 15.0, top: 10.0, bottom: 10.0),
-           child: button("CONFIRM", bgColor: primary),
+           child: button("CONFIRM", bgColor: primary, onTap: (){
+             Navigator.push(context, MaterialPageRoute(builder: (context)=> const LoginView()));
+           }),
          )
         ],
       ),
