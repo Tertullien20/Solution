@@ -6,10 +6,11 @@ import 'package:solution/view/widgets/space.dart';
 import '../../../utils/validators/email.dart';
 import '../../../utils/validators/empty.dart';
 import '../../../utils/validators/min_length.dart';
-import '../../widgets/remember_me.dart';
 import '../../widgets/text.dart';
 import '../../../provider/language/app_localizations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import 'insert_nick_name.dart';
 
 class SigninView extends StatefulWidget {
   const SigninView({super.key});
@@ -115,9 +116,9 @@ class _SigninViewState extends State<SigninView> {
           Padding(
             padding: const EdgeInsets.only(
                 left: 15.0, right: 15.0, top: 10.0, bottom: 10.0),
-            child: button("SIGN IN", bgColor: primary, onTap: () {
-              /*Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const InsetNickName()));*/
+            child: button("CONTINUE", bgColor: primary, onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const InsertNickName()));
             }),
           )
         ],

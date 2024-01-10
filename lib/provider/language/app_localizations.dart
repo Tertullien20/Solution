@@ -50,6 +50,18 @@ class AppLocalizations {
       "es": "Para empezar, introduce \ntu dirección Lightning",
       "de": "Beginnen Sie mit der Eingabe \nIhrer Lightning-Adresse",
     },
+    "your_nickname": {
+      "en": "What is your nickname?",
+      "fr": "Quel est votre surnom ?",
+      "es": "¿Cuál es su apodo?",
+      "de": "Wie lautet Ihr Spitzname?",
+    },
+    "see_name": {
+      "en": "This is what other community member see.",
+      "fr": "C'est ce que voient les autres membres de la communauté.",
+      "es": "Esto es lo que ven los demás miembros de la comunidad.",
+      "de": "Das ist es, was andere Mitglieder der Gemeinschaft sehen.",
+    },
   };
 
   String translate(String key) {
