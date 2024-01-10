@@ -11,10 +11,10 @@ Widget input(TextEditingController controller,
     bool enabled = true,
     colorBorder = secondary, colorFont}) {
   return Container(
+    padding: const EdgeInsets.all(4.0),
       decoration: BoxDecoration(
         color: colorFont,
         borderRadius: BorderRadius.circular(7.0),
-        border: Border.all(color: colorBorder, width: 2.0),
       ),
       child: TextFormField(
         enabled: enabled,
@@ -48,23 +48,24 @@ InputDecoration textFieldDecoration(String hintText,
   return InputDecoration(
       labelText: labelText,
       contentPadding: const EdgeInsets.all(10),
-      border: const OutlineInputBorder(),
+      border: const OutlineInputBorder(borderSide: BorderSide(color: Colors.yellow)),
       disabledBorder: InputBorder.none,
-      fillColor: Colors.grey,
+      fillColor: greySample,
       filled: filled,
       hintText: hintText,
-      hintStyle: const TextStyle(color: Colors.grey),
-      labelStyle: const TextStyle(color: Colors.grey),
-      enabledBorder: textFieldBorder(),
-      focusedBorder: textFieldBorder(),
+      hintStyle: const TextStyle(color: greySample),
+      labelStyle: const TextStyle(color: greySample),
+      enabledBorder: textFieldBorder(transparent),
+      focusedBorder: textFieldBorder(primary),
+      focusColor: primary,
       errorText: errorText,
       suffixIcon: suffixIcon,
       prefixIcon: prefixIcon,
       floatingLabelBehavior: FloatingLabelBehavior.never);
 }
 
-InputBorder textFieldBorder() {
-  return const OutlineInputBorder(
-      borderSide: BorderSide(width: 2.0, color: transparent),
-      borderRadius: BorderRadius.all(Radius.circular(8.0)));
+InputBorder textFieldBorder(color) {
+  return  OutlineInputBorder(
+      borderSide: BorderSide(width: 2.0, color: color),
+      borderRadius: const BorderRadius.all(Radius.circular(8.0)));
 }

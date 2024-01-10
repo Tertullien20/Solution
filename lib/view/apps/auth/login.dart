@@ -58,6 +58,7 @@ class _LoginViewState extends State<LoginView> {
                     "imgs/vector.png",
                     width: 30.0,
                     height: 30.0,
+                    color: Colors.yellow,
                   )),
                   buildInput("Password",passController, TextInputType.visiblePassword, suffixIcon: const Icon(Icons.remove_red_eye, color: grey), obscureText: true, prefixIcon: const Padding(
                     padding:  EdgeInsets.all(8.0),
