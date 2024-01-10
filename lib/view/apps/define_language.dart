@@ -1,4 +1,3 @@
-import '../../provider/language/app_localizations.dart';
 import 'auth/login.dart';
 import '../widgets/text.dart';
 import '../widgets/space.dart';
@@ -6,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:solution/view/widgets/button.dart';
 import 'package:solution/utils/constants/colors.dart';
+import '../../provider/language/app_localizations.dart';
 import '../../provider/language/language_provider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -24,7 +24,6 @@ class _DefineLanguageState extends State<DefineLanguage> {
 
   @override
   Widget build(BuildContext context) {
-    Locale currentLocale = context.watch<LanguageProvider>().locale;
     return Scaffold(
       backgroundColor: secondary,
       body: Column(

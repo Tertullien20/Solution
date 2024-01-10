@@ -32,6 +32,18 @@ class AppLocalizations {
       "es": "Seleccione un idioma para empezar.",
       "de": "Wählen Sie eine Sprache, um loszulegen.",
     },
+    "welcome_back": {
+      "en": "Welcome back,",
+      "fr": "Bienvenue,",
+      "es": "Bienvenido de nuevo,",
+      "de": "willkommen zurück,",
+    },
+    "have_account": {
+      "en": "Don’t have an account yet? Sign Up",
+      "fr": "Vous n'avez pas encore de compte ? S'inscrire",
+      "es": "¿Aún no tiene una cuenta? Regístrese",
+      "de": "Sie haben noch kein Konto? Anmelden",
+    },
   };
 
   String translate(String key) {
