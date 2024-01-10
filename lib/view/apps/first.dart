@@ -56,7 +56,7 @@ class _FirstViewState extends State<FirstView> {
                           Row(
                             children: [
                               Image.asset(
-                                "imgs/flag_english.png",
+                                "imgs/flag/flag_english.png",
                                 width: 20.0,
                                 height: 20.0,
                               ),
