@@ -21,6 +21,7 @@ Widget input(TextEditingController controller,
         decoration: decoration,
         obscureText: obscureText,
         keyboardType: keyboardType,
+        style: const TextStyle(color: white),
         validator: (val) {
           if (validators != null) {
             for (var e in validators) {
@@ -53,7 +54,8 @@ InputDecoration textFieldDecoration(String hintText,
       fillColor: white,
       filled: filled,
       hintText: hintText,
-      hintStyle: TextStyle(color: colorHint),
+      hintStyle: const TextStyle(color: Colors.grey),
+      labelStyle: const TextStyle(color: white),
       enabledBorder: textFieldBorder(),
       focusedBorder: textFieldBorder(),
       errorText: errorText,
@@ -64,6 +66,6 @@ InputDecoration textFieldDecoration(String hintText,
 
 InputBorder textFieldBorder() {
   return const OutlineInputBorder(
-      borderSide: BorderSide(width: 2.0),
+      borderSide: BorderSide(width: 2.0, color: transparent),
       borderRadius: BorderRadius.all(Radius.circular(8.0)));
 }
