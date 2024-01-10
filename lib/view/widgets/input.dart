@@ -45,6 +45,7 @@ InputDecoration textFieldDecoration(String hintText,
   if (labelText == "") {
     labelText = hintText;
   }
+
   return InputDecoration(
       labelText: labelText,
       contentPadding: const EdgeInsets.all(10),
