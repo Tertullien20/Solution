@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:solution/view/widgets/button.dart';
 import 'package:solution/utils/constants/colors.dart';
 import 'package:solution/view/widgets/input.dart';
+import '../../widgets/remember_me.dart';
 import '../../widgets/text.dart';
 import '../../../provider/language/app_localizations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -17,8 +18,8 @@ class _LoginViewState extends State<LoginView> {
 
   final mailController = TextEditingController();
   final passController = TextEditingController();
-
   int selectedOptionIndex = -1;
+  bool rememberMe = false;
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +65,27 @@ class _LoginViewState extends State<LoginView> {
                     padding:  EdgeInsets.all(8.0),
                     child: Icon(Icons.lock_outline, color: white),
                   )),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        rememberMeCheckbox(
+                          rememberMe,
+                              (newValue) {
+                            setState(() {
+                              rememberMe = newValue!;
+                            });
+                          },
+                        ),
+                        Row(
+                          children: [
+                            boldText('Forget password?', color: white, size: 16.0),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
                   Padding(
                     padding: const EdgeInsets.only(
                         left: 15.0, right: 15.0, top: 10.0, bottom: 10.0),
