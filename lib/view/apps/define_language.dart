@@ -17,7 +17,6 @@ class DefineLanguage extends StatefulWidget {
 }
 
 class _DefineLanguageState extends State<DefineLanguage> {
-
   final controller = TextEditingController();
   int selectedOptionIndex = 0;
 
@@ -51,8 +50,12 @@ class _DefineLanguageState extends State<DefineLanguage> {
                 children: [
                   Row(
                     children: [
-                      boldText(AppLocalizations(context).translate("what_your_language"),
-                          color: white, size: 30.0, align: TextAlign.start),
+                      boldText(
+                          AppLocalizations(context)
+                              .translate("what_your_language"),
+                          color: white,
+                          size: 30.0,
+                          align: TextAlign.start),
                     ],
                   ),
                   space(h: 10.0),
@@ -63,12 +66,12 @@ class _DefineLanguageState extends State<DefineLanguage> {
                     ],
                   ),
                   space(h: 20.0),
-                  itemLanguage("imgs/flag_english.png",
+                  itemLanguage("imgs/flag/flag_english.png",
                       "United Kingdom (British)", 0, const Locale("en", "US")),
-                  itemLanguage(
-                      "imgs/flag_spanish.png", "Spanish (Español)", 1, const Locale("es", "ES")),
-                  itemLanguage(
-                      "imgs/flag_french.png", "France (France)", 2, const Locale("fr", "FR")),
+                  itemLanguage("imgs/flag/flag_spanish.png",
+                      "Spanish (Español)", 1, const Locale("es", "ES")),
+                  itemLanguage("imgs/flag/flag_french.png", "France (France)",
+                      2, const Locale("fr", "FR")),
                   Expanded(child: Container()),
                 ],
               ),

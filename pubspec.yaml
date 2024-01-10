@@ -74,10 +74,13 @@ flutter:
   assets:
     - imgs/avatar.png
     - imgs/vector.png
-    - imgs/flag_french.png
-    - imgs/flag_spanish.png
-    - imgs/flag_english.png
+    - imgs/menu/leader.png
+    - imgs/menu/profile.png
+    - imgs/menu/earnsat.png
     - imgs/splash_screen.jpg
+    - imgs/flag/flag_french.png
+    - imgs/flag/flag_spanish.png
+    - imgs/flag/flag_english.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
