@@ -61,20 +61,25 @@ class _InsertNickNameState extends State<InsertNickName> {
                   Row(
                     children: [
                       SizedBox(
-                        width: MediaQuery.of(context).size.width /1.1,
-                        child: text(AppLocalizations(context).translate("see_name"),
-                            color: white, size: 16.0, align: TextAlign.start),
+                        width: MediaQuery.of(context).size.width / 1.1,
+                        child: text(
+                            AppLocalizations(context).translate("see_name"),
+                            color: white,
+                            size: 16.0,
+                            align: TextAlign.start),
                       ),
                     ],
                   ),
                   space(h: 20.0),
-                  buildInput("NickName", nickNameController,
-                      TextInputType.text,
+                  buildInput("NickName", nickNameController, TextInputType.text,
                       validators: [empty],
-                      maxLines: 1, suffixIcon: IconButton(
-                          onPressed: () => setState(() {
-                            nickNameController.clear();
-                          }),
+                      maxLines: 1,
+                      suffixIcon: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              nickNameController.clear();
+                            });
+                          },
                           icon: const Icon(FontAwesomeIcons.xmark,
                               color: greySample))),
                   Expanded(child: Container()),
@@ -97,10 +102,10 @@ class _InsertNickNameState extends State<InsertNickName> {
 
   Widget buildInput(String text, controller, keyboardType,
       {suffixIcon,
-        bool obscureText = false,
-        prefixIcon,
-        validators,
-        maxLines}) {
+      bool obscureText = false,
+      prefixIcon,
+      validators,
+      maxLines}) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: input(controller,
