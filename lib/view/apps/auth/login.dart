@@ -69,7 +69,7 @@ class _LoginViewState extends State<LoginView> {
                   ), validators: [empty,email], maxLines: 1),
                   buildInput("Password",passController, TextInputType.visiblePassword, suffixIcon: IconButton(onPressed: ()=> setState(() {
                     _obscurePass = !_obscurePass;
-                  }), icon: Icon(_obscurePass ? Icons.visibility_off: Icons.visibility, color: grey)), obscureText: _obscurePass, prefixIcon: const Padding(
+                  }), icon: Icon(_obscurePass ? Icons.visibility_off: Icons.visibility, color: greySample)), obscureText: _obscurePass, prefixIcon: const Padding(
                     padding:  EdgeInsets.all(8.0),
                     child: Icon(Icons.lock_outline, color: white),
                   ), validators: [empty, minLength]),
