@@ -44,6 +44,12 @@ class AppLocalizations {
       "es": "¿Aún no tiene una cuenta? Regístrese",
       "de": "Sie haben noch kein Konto? Anmelden",
     },
+    "enter_address": {
+      "en": "Get started by entering \nyour Lightning Address",
+      "fr": "Commencez par saisir \nvotre adresse mail",
+      "es": "Para empezar, introduce \ntu dirección Lightning",
+      "de": "Beginnen Sie mit der Eingabe \nIhrer Lightning-Adresse",
+    },
   };
 
   String translate(String key) {

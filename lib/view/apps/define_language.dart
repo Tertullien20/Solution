@@ -19,7 +19,7 @@ class DefineLanguage extends StatefulWidget {
 class _DefineLanguageState extends State<DefineLanguage> {
 
   final controller = TextEditingController();
-  int selectedOptionIndex = -1;
+  int selectedOptionIndex = 0;
 
   @override
   Widget build(BuildContext context) {
