@@ -1,11 +1,13 @@
-import '../widgets/space.dart';
+import '../../provider/language/app_localizations.dart';
+import 'auth/login.dart';
 import '../widgets/text.dart';
+import '../widgets/space.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:solution/view/widgets/button.dart';
 import 'package:solution/utils/constants/colors.dart';
+import '../../provider/language/language_provider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-import 'auth/login.dart';
 
 class DefineLanguage extends StatefulWidget {
   const DefineLanguage({super.key});
@@ -15,12 +17,14 @@ class DefineLanguage extends StatefulWidget {
 }
 
 class _DefineLanguageState extends State<DefineLanguage> {
+
   final controller = TextEditingController();
 
   int selectedOptionIndex = -1;
 
   @override
   Widget build(BuildContext context) {
+    Locale currentLocale = context.watch<LanguageProvider>().locale;
     return Scaffold(
       backgroundColor: secondary,
       body: Column(
@@ -49,24 +53,24 @@ class _DefineLanguageState extends State<DefineLanguage> {
                 children: [
                   Row(
                     children: [
-                      boldText("What is your \nlanguage?",
+                      boldText(AppLocalizations(context).translate("what_your_language"),
                           color: white, size: 32.0, align: TextAlign.start),
                     ],
                   ),
                   space(h: 10.0),
                   Row(
                     children: [
-                      text("Select a language to get started.",
+                      text(AppLocalizations(context).translate("select_lang"),
                           color: white, size: 16.0),
                     ],
                   ),
                   space(h: 20.0),
                   itemLanguage("imgs/flag_english.png",
-                      "United Kingdom (British)", 0),
+                      "United Kingdom (British)", 0, const Locale("en", "US")),
                   itemLanguage(
-                      "imgs/flag_spanish.png", "Spanish (Español)", 1),
+                      "imgs/flag_spanish.png", "Spanish (Español)", 1, const Locale("es", "ES")),
                   itemLanguage(
-                      "imgs/flag_french.png", "France (France)", 2),
+                      "imgs/flag_french.png", "France (France)", 2, const Locale("fr", "FR")),
                   Expanded(child: Container()),
                 ],
               ),
@@ -85,11 +89,12 @@ class _DefineLanguageState extends State<DefineLanguage> {
     );
   }
 
-  Widget itemLanguage(path, label, index) {
+  Widget itemLanguage(path, label, index, locale) {
     return InkWell(
       onTap: () {
         setState(() {
           selectedOptionIndex = index;
+          context.read<LanguageProvider>().changeLanguage(locale);
         });
       },
       child: Padding(

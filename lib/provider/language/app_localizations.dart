@@ -20,6 +20,18 @@ class AppLocalizations {
       "es": "En espagne bienvenue",
       "de": "en de bienv",
     },
+    "what_your_language": {
+      "en": "What is your \nlanguage?",
+      "fr": "Quelle est votre \nlangue?",
+      "es": "¿Cuál es su \nidioma?",
+      "de": "Was ist Ihre \nSprache?",
+    },
+    "select_lang": {
+      "en": "Select a language to get started.",
+      "fr": "Sélectionnez une langue pour commencer.",
+      "es": "Seleccione un idioma para empezar.",
+      "de": "Wählen Sie eine Sprache, um loszulegen.",
+    },
   };
 
   String translate(String key) {
