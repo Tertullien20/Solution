@@ -62,11 +62,11 @@ class _DefineLanguageState extends State<DefineLanguage> {
                   ),
                   space(h: 20.0),
                   itemLanguage("imgs/flag_english.png",
-                      "United Kingdom (British)", () {}),
+                      "United Kingdom (British)", 0),
                   itemLanguage(
-                      "imgs/flag_spanish.png", "Spanish (Español)", () {}),
+                      "imgs/flag_spanish.png", "Spanish (Español)", 1),
                   itemLanguage(
-                      "imgs/flag_french.png", "France (France)", () {}),
+                      "imgs/flag_french.png", "France (France)", 2),
                   Expanded(child: Container()),
                 ],
               ),
@@ -85,9 +85,13 @@ class _DefineLanguageState extends State<DefineLanguage> {
     );
   }
 
-  Widget itemLanguage(path, label, onTap) {
+  Widget itemLanguage(path, label, index) {
     return InkWell(
-      onTap: onTap,
+      onTap: () {
+        setState(() {
+          selectedOptionIndex = index;
+        });
+      },
       child: Padding(
         padding: const EdgeInsets.only(top: 8.0, bottom: 8.0, right: 8.0),
         child: Container(
@@ -95,7 +99,7 @@ class _DefineLanguageState extends State<DefineLanguage> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10.0),
             border: Border.all(
-              color: grey,
+              color: selectedOptionIndex == index ? white : grey,
               width: 2.0,
             ),
           ),
