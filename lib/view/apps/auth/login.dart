@@ -4,10 +4,12 @@ import 'package:solution/view/widgets/button.dart';
 import 'package:solution/utils/constants/colors.dart';
 import 'package:solution/view/widgets/input.dart';
 import 'package:solution/view/widgets/space.dart';
+import '../../../services/auth_service.dart';
 import '../../../utils/validators/email.dart';
 import '../../../utils/validators/empty.dart';
 import '../../../utils/validators/min_length.dart';
 import '../../widgets/remember_me.dart';
+import '../../widgets/snack_bar.dart';
 import '../../widgets/text.dart';
 import '../../../provider/language/app_localizations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -22,11 +24,13 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-
+  final AuthenticationService _auth= AuthenticationService();
   final mailController = TextEditingController();
   final passController = TextEditingController();
   int selectedOptionIndex = -1;
   bool rememberMe = false, _obscurePass = true;
+  String responseValue = '';
+  bool _loading = false;
 
 
   @override
@@ -100,9 +104,20 @@ class _LoginViewState extends State<LoginView> {
                   Padding(
                     padding: const EdgeInsets.only(
                         left: 15.0, right: 15.0, top: 10.0, bottom: 10.0),
-                    child: button("SIGN IN", bgColor: primary, onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) =>  const MyDashBoard()));
+                    child: button("SIGN IN", bgColor: primary, onTap: () async{
+                      dynamic result = await _auth.signInWithEmailAndPassword(mailController.text, passController.text);
+                      responseValue = result.toString();
+
+                      if(result=="Instance of 'UserApp'"){
+                        setState(() {
+                          _loading=false;
+                        });
+                      }else if(responseValue=="null"){
+                        responseValue="Erreur de connexion";
+                      }
+                      signin();
+                      /*Navigator.push(context,
+                          MaterialPageRoute(builder: (context) =>  const MyDashBoard()));*/
                     }),
                   ),
                   Expanded(child: Container()),
@@ -136,5 +151,14 @@ class _LoginViewState extends State<LoginView> {
           colorBorder: primary, colorFont: fillGrey,
           decoration: textFieldDecoration(text, prefixIcon: prefixIcon , filled: false, suffixIcon: suffixIcon), validators: validators),
     );
+  }
+
+  signin(){
+
+    setState(() {
+        if(responseValue=="Instance of 'UserApp'"){
+          ScaffoldMessenger.of(context).showSnackBar(showSnackBar("Connexion réussie"));
+        }
+    });
   }
 }
