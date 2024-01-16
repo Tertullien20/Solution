@@ -73,10 +73,15 @@ class _FirstViewState extends State<FirstView> {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                      left: 15.0, right: 15.0, top: 10.0, bottom: 10.0),
-                  child: button('GET STARTED'),
+                InkWell(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> const LoginView()));
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                        left: 15.0, right: 15.0, top: 10.0, bottom: 10.0),
+                    child: button('GET STARTED'),
+                  ),
                 ),
                 InkWell(
                   onTap: (){

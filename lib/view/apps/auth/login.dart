@@ -110,14 +110,15 @@ class _LoginViewState extends State<LoginView> {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(
-                left: 15.0, right: 15.0, top: 10.0, bottom: 40.0),
-            child: InkWell(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=> const SigninView()));
-              },
-                child: text( AppLocalizations(context).translate("have_account"), color: white)),
+          InkWell(
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=> const SigninView()));
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(
+                  left: 15.0, right: 15.0, top: 10.0, bottom: 40.0),
+              child: text( AppLocalizations(context).translate("have_account"), color: white),
+            ),
           )
         ],
       ),

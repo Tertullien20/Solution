@@ -118,7 +118,7 @@ class _SigninViewState extends State<SigninView> {
                 left: 15.0, right: 15.0, top: 10.0, bottom: 10.0),
             child: button("CONTINUE", bgColor: primary, onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const InsertNickName()));
+                  MaterialPageRoute(builder: (context) => InsertNickName(emailAdress:  mailController.text, password:passController.text)));
             }),
           )
         ],

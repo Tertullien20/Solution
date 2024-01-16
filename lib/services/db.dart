@@ -10,9 +10,9 @@ class Database {
 
   final FirebaseStorage _storage= FirebaseStorage.instance;
 
-  Future<void> saveUser(String name, bool status, String numberPhone, String bio, String userUrlImg) async {
+  Future<void> saveUser(String nickName, String userUrlImg) async {
     return await userCollection.doc(uid).set({
-      'name': name,
+      'name': nickName,
       'userUrlImg': userUrlImg
     });
   }

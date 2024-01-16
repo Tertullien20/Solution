@@ -18,6 +18,7 @@ Widget input(TextEditingController controller,
       ),
       child: TextFormField(
         enabled: enabled,
+        controller: controller,
         decoration: decoration,
         obscureText: obscureText,
         keyboardType: keyboardType,

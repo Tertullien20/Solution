@@ -4,22 +4,31 @@ import 'package:solution/view/widgets/button.dart';
 import 'package:solution/utils/constants/colors.dart';
 import 'package:solution/view/widgets/input.dart';
 import 'package:solution/view/widgets/space.dart';
+import '../../../services/auth_service.dart';
 import '../../../utils/validators/email.dart';
 import '../../../utils/validators/empty.dart';
 import '../../../utils/validators/min_length.dart';
+import '../../widgets/snack_bar.dart';
 import '../../widgets/text.dart';
 import '../../../provider/language/app_localizations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import 'login.dart';
+
 class InsertNickName extends StatefulWidget {
-  const InsertNickName({super.key});
+  final String emailAdress;
+  final String password;
+  const InsertNickName({super.key, required this.emailAdress, required this.password});
 
   @override
   State<InsertNickName> createState() => _InsertNickNameState();
 }
 
 class _InsertNickNameState extends State<InsertNickName> {
+  final AuthenticationService _auth= AuthenticationService();
   final nickNameController = TextEditingController();
+  bool _loading = false;
+  String responseValue = '';
 
   @override
   Widget build(BuildContext context) {
@@ -91,9 +100,17 @@ class _InsertNickNameState extends State<InsertNickName> {
           Padding(
             padding: const EdgeInsets.only(
                 left: 15.0, right: 15.0, top: 10.0, bottom: 10.0),
-            child: button("CONTINUE", bgColor: primary, onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const MyDashBoard()));
+            child: button("CONTINUE", bgColor: primary, onTap: () async{
+              dynamic result = await _auth.registerWithEmailAndPassword(nickNameController.text, widget.emailAdress,  widget.password);
+              if(result==null){
+                setState(() {
+                  _loading=false;
+                  responseValue="Erreur de connexion";
+                });
+              }
+              registerIn();
+              /*Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const MyDashBoard()));*/
             }),
           )
         ],
@@ -119,5 +136,15 @@ class _InsertNickNameState extends State<InsertNickName> {
               prefixIcon: prefixIcon, filled: false, suffixIcon: suffixIcon),
           validators: validators),
     );
+  }
+
+  void registerIn() {
+    setState(() {
+      if(responseValue=="Instance of 'UserApp'"){
+        Navigator.pop(context);
+        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=> const LoginView()), (route) => false);
+        ScaffoldMessenger.of(context).showSnackBar(showSnackBar("Inscription réussie"));
+      }
+    });
   }
 }

@@ -32,15 +32,13 @@ class AuthenticationService {
     }
   }
 
-  Future registerWithEmailAndPassword(String pseudo, String email, String password) async {
+  Future registerWithEmailAndPassword(String nickName, String email, String password) async {
     try {
       UserCredential result =
       await _auth.createUserWithEmailAndPassword(email: email, password: password);
       User? user = result.user;
-      await Database(user!.uid).saveUser(pseudo, false, "", "", "");
-      await user.sendEmailVerification();
+      await Database(user!.uid).saveUser(nickName, "");
 
-      //TODO store new user in Firestore
       return _userFromFirebaseUser(user);
     }on FirebaseAuthException catch(e) {
       if(e.code == 'week-password') {
