@@ -8,3 +8,6 @@ const Color white = Color(0xFFF9FBFE);
 const Color greySample = Colors.grey;
 const Color grey = Color(0xFF424C62);
 const Color fillGrey = Color(0xFF283042);
+const Color yellow = Color(0xFFFBB11C);
+const Color grey92 = Color(0xFF929292);
+const Color red = Color(0xFFDE453B);

@@ -50,7 +50,7 @@ InputDecoration textFieldDecoration(String hintText,
   return InputDecoration(
       labelText: labelText,
       contentPadding: const EdgeInsets.all(10),
-      border: const OutlineInputBorder(borderSide: BorderSide(color: Colors.yellow)),
+      border: const OutlineInputBorder(borderSide: BorderSide(color: yellow)),
       disabledBorder: InputBorder.none,
       fillColor: tertiary,
       filled: filled,

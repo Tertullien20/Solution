@@ -1,21 +1,21 @@
-import 'package:flutter/material.dart';
-import 'package:solution/view/apps/auth/forget_pass.dart';
-import 'package:solution/view/apps/auth/signin.dart';
-import 'package:solution/view/widgets/button.dart';
-import 'package:solution/utils/constants/colors.dart';
-import 'package:solution/view/widgets/input.dart';
-import 'package:solution/view/widgets/space.dart';
-import '../../../services/auth_service.dart';
 import '../../../utils/validators/email.dart';
-import '../../../utils/validators/empty.dart';
-import '../../../utils/validators/min_length.dart';
-import '../../widgets/remember_me.dart';
-import '../../widgets/snack_bar.dart';
 import '../../widgets/text.dart';
+import '../../widgets/snack_bar.dart';
+import '../profile/my_dash_board.dart';
+import 'package:flutter/material.dart';
+import '../../widgets/remember_me.dart';
+import '../../../services/auth_service.dart';
+import '../../../utils/validators/empty.dart';
+import 'package:solution/view/widgets/space.dart';
+import 'package:solution/view/widgets/input.dart';
+import '../../../utils/validators/min_length.dart';
+import 'package:solution/view/widgets/button.dart';
+import 'package:solution/view/apps/auth/signin.dart';
+import 'package:solution/utils/constants/colors.dart';
+import 'package:solution/view/apps/auth/forget_pass.dart';
 import '../../../provider/language/app_localizations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../profile/my_dash_board.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -28,11 +28,9 @@ class _LoginViewState extends State<LoginView> {
   final AuthenticationService _auth= AuthenticationService();
   final mailController = TextEditingController();
   final passController = TextEditingController();
-  int selectedOptionIndex = -1;
   bool rememberMe = false, _obscurePass = true;
   String responseValue = '';
   bool _loading = false;
-
 
   @override
   Widget build(BuildContext context) {
@@ -73,13 +71,13 @@ class _LoginViewState extends State<LoginView> {
                     "imgs/vector.png",
                     width: 30.0,
                     height: 30.0,
-                    color: Colors.yellow,
-                  ), validators: [empty,email], maxLines: 1),
+                    color: yellow,
+                  ), maxLines: 1),
                   buildInput("Password",passController, TextInputType.visiblePassword, suffixIcon: IconButton(onPressed: ()=> setState(() {
                     _obscurePass = !_obscurePass;
-                  }), icon: Icon(_obscurePass ? Icons.visibility_off: Icons.visibility, color: greySample)), obscureText: _obscurePass, prefixIcon: const Padding(
-                    padding:  EdgeInsets.all(8.0),
-                    child: Icon(Icons.lock_outline, color: white),
+                  }), icon: Icon(_obscurePass ? Icons.visibility_off: Icons.visibility, color: grey92)), obscureText: _obscurePass, prefixIcon:  Padding(
+                    padding:  const EdgeInsets.all(8.0),
+                    child: Icon(Icons.lock_outline, color: passController.text.isNotEmpty ? white: grey92),
                   ), validators: [empty, minLength]),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -110,36 +108,67 @@ class _LoginViewState extends State<LoginView> {
                   Padding(
                     padding: const EdgeInsets.only(
                         left: 15.0, right: 15.0, top: 10.0, bottom: 10.0),
-                    child: button("SIGN IN", bgColor: primary, onTap: () async{
-                      dynamic result = await _auth.signInWithEmailAndPassword(mailController.text, passController.text);
-                      responseValue = result.toString();
+                    child: button("SIGN IN", bgColor: primary, loading: _loading, colorLoader: white, onTap: () async{
 
-                      if(result=="Instance of 'UserApp'"){
-                        setState(() {
-                          _loading=false;
-                        });
-                      }else if(responseValue=="null"){
-                        responseValue="Erreur de connexion";
-                      }
-                      signin();
-                      /*Navigator.push(context,
+                      if(mailController.text.isNotEmpty && passController.text.isNotEmpty){
+                        String? emailValidationResult = validMail(mailController.text);
+
+                        if (emailValidationResult != null) {
+                          setState(() {
+                            responseValue = emailValidationResult;
+                          });
+                        } else {
+                          setState(() {
+                            _loading = true;
+                            responseValue = '';
+                          });
+                          dynamic result = await _auth.signInWithEmailAndPassword(mailController.text, passController.text);
+                          responseValue = result.toString();
+                          print(result);
+
+                          if(result=="Instance of 'UserApp'"){
+                            setState(() {
+                              _loading=false;
+                              responseValue = "";
+                            });
+                          }else if(responseValue=="null"){
+                            responseValue="Erreur de connexion";
+                          }
+                          signin();
+                          setState(() {
+                            _loading = false;
+                          });
+                          /*Navigator.push(context,
                           MaterialPageRoute(builder: (context) =>  const MyDashBoard()));*/
+                        }
+                      }else {
+                        setState(() {
+                          responseValue = 'Tous les champs sont requis. ';
+                        });
+                      }
                     }),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: text(responseValue, color: red, align: TextAlign.start, overflow: TextOverflow.visible),
                   ),
                   Expanded(child: Container()),
                 ],
               ),
             ),
           ),
-          InkWell(
-            onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=> const SigninView()));
-            },
-            child: Padding(
-              padding: const EdgeInsets.only(
-                  left: 15.0, right: 15.0, top: 10.0, bottom: 40.0),
-              child: text( AppLocalizations(context).translate("have_account"), color: white),
-            ),
+          Padding(
+            padding: const EdgeInsets.only(
+                left: 15.0, right: 15.0, top: 10.0, bottom: 40.0),
+            child: InkWell(
+              focusColor: transparent,
+              highlightColor: transparent,
+              hoverColor: transparent,
+              splashColor: transparent,
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> const SigninView()));
+              },
+                child: text( AppLocalizations(context).translate("have_account"), color: white)),
           )
         ],
       ),
@@ -160,7 +189,6 @@ class _LoginViewState extends State<LoginView> {
   }
 
   signin(){
-
     setState(() {
         if(responseValue=="Instance of 'UserApp'"){
           ScaffoldMessenger.of(context).showSnackBar(showSnackBar("Connexion réussie"));

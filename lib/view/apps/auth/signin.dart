@@ -25,6 +25,8 @@ class _SigninViewState extends State<SigninView> {
   final confirmPassController = TextEditingController();
   int selectedOptionIndex = -1;
   bool rememberMe = false, _obscurePass = true;
+  String responseValue = '';
+
 
   @override
   Widget build(BuildContext context) {
@@ -70,9 +72,8 @@ class _SigninViewState extends State<SigninView> {
                         "imgs/vector.png",
                         width: 30.0,
                         height: 30.0,
-                        color: Colors.yellow,
+                        color: yellow,
                       ),
-                      validators: [empty, email],
                       maxLines: 1),
                   buildInput(
                       "Password", passController, TextInputType.visiblePassword,
@@ -86,9 +87,9 @@ class _SigninViewState extends State<SigninView> {
                                   : Icons.visibility,
                               color: greySample)),
                       obscureText: _obscurePass,
-                      prefixIcon: const Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Icon(Icons.lock_outline, color: white),
+                      prefixIcon:  Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Icon(Icons.lock_outline, color:  passController.text.isNotEmpty ?  white: grey92),
                       ),
                       validators: [empty, minLength]),
                   buildInput("Confirm Password", confirmPassController,
@@ -101,11 +102,11 @@ class _SigninViewState extends State<SigninView> {
                               _obscurePass
                                   ? Icons.visibility_off
                                   : Icons.visibility,
-                              color: greySample)),
+                              color: grey92)),
                       obscureText: _obscurePass,
-                      prefixIcon: const Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Icon(Icons.lock_outline, color: white),
+                      prefixIcon:  Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Icon(Icons.lock_outline, color:  confirmPassController.text.isNotEmpty ?  white: grey92),
                       ),
                       validators: [empty, minLength]),
                   Expanded(child: Container()),
@@ -117,9 +118,29 @@ class _SigninViewState extends State<SigninView> {
             padding: const EdgeInsets.only(
                 left: 15.0, right: 15.0, top: 10.0, bottom: 10.0),
             child: button("CONTINUE", bgColor: primary, onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => InsertNickName(emailAdress:  mailController.text, password:passController.text)));
-            }),
+              if(mailController.text.isNotEmpty && passController.text.isNotEmpty){
+                String? emailValidationResult = validMail(mailController.text);
+
+                if (emailValidationResult != null) {
+                  setState(() {
+                    responseValue = emailValidationResult;
+                  });
+                } else {
+                  setState(() {
+                    responseValue = '';
+                  });
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => InsertNickName(emailAdress:  mailController.text, password:passController.text)));
+
+                }
+
+              }else {
+                setState(() {
+                  responseValue = 'Tous les champs sont requis';
+                });
+
+              }
+           }),
           )
         ],
       ),

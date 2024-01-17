@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:solution/view/apps/auth/signin.dart';
 import 'package:solution/view/widgets/button.dart';
 import 'package:solution/utils/constants/colors.dart';
 import 'package:solution/view/widgets/input.dart';
 import 'package:solution/view/widgets/space.dart';
-import '../../../services/auth_service.dart';
 import '../../../utils/validators/email.dart';
 import '../../../utils/validators/empty.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../widgets/text.dart';
-import '../../../provider/language/app_localizations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ForgetPass extends StatefulWidget {
@@ -21,11 +18,7 @@ class ForgetPass extends StatefulWidget {
 }
 
 class _ForgetPassState extends State<ForgetPass> {
-  final AuthenticationService _auth= AuthenticationService();
   final mailController = TextEditingController();
-  final passController = TextEditingController();
-  int selectedOptionIndex = -1;
-  bool rememberMe = false, _obscurePass = true;
   String responseValue = '';
   bool _loading = false;
 
@@ -69,8 +62,8 @@ class _ForgetPassState extends State<ForgetPass> {
                     "imgs/vector.png",
                     width: 30.0,
                     height: 30.0,
-                    color: Colors.yellow,
-                  ), validators: [empty,email], maxLines: 1),
+                    color: yellow,
+                  ), maxLines: 1),
                   Padding(
                     padding: const EdgeInsets.only(
                         left: 15.0, right: 15.0, top: 10.0, bottom: 10.0),
