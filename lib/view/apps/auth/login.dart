@@ -191,7 +191,11 @@ class _LoginViewState extends State<LoginView> {
   signin(){
     setState(() {
         if(responseValue=="Instance of 'UserApp'"){
+          responseValue = '';
           ScaffoldMessenger.of(context).showSnackBar(showSnackBar("Connexion réussie"));
+          Navigator.push(context, MaterialPageRoute(builder: (context){
+            return const MyDashBoard();
+          }));
         }
     });
   }
