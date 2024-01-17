@@ -52,7 +52,7 @@ class _ChangeMailState extends State<ChangeMail> {
                 children: [
                   Row(
                     children: [
-                      boldText('Enter your lightning address',
+                      boldText('Change your lightning address',
                           color: white, size: 30.0, align: TextAlign.start),
                     ],
                   ),

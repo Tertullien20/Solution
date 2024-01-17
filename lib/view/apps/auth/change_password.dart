@@ -16,7 +16,9 @@ class ChangePassword extends StatefulWidget {
 }
 
 class _ChangePasswordState extends State<ChangePassword> {
-  final mailController = TextEditingController();
+  final passController = TextEditingController();
+  final confirmPassController = TextEditingController();
+  bool _obscurePass = true;
   String responseValue = '';
   bool _loading = false;
 
@@ -51,22 +53,52 @@ class _ChangePasswordState extends State<ChangePassword> {
                 children: [
                   Row(
                     children: [
-                      boldText('Enter your lightning address',
+                      boldText('Update your password',
                           color: white, size: 30.0, align: TextAlign.start),
                     ],
                   ),
                   space(h: 20.0),
-                  buildInput("Enter your lightning address",mailController, TextInputType.emailAddress, prefixIcon: Image.asset(
-                    "imgs/vector.png",
-                    width: 30.0,
-                    height: 30.0,
-                    color: yellow,
-                  ), maxLines: 1),
+                  buildInput(
+                      "Password", passController, TextInputType.visiblePassword,
+                      suffixIcon: IconButton(
+                          onPressed: () => setState(() {
+                            _obscurePass = !_obscurePass;
+                          }),
+                          icon: Icon(
+                              _obscurePass
+                                  ? Icons.visibility_off
+                                  : Icons.visibility,
+                              color: greySample)),
+                      obscureText: _obscurePass,
+                      prefixIcon:  Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Icon(Icons.lock_outline, color:  passController.text.isNotEmpty ?  white: grey92),
+                      ),),
+                  buildInput("Confirm Password", confirmPassController,
+                    TextInputType.visiblePassword,
+                    suffixIcon: IconButton(
+                        onPressed: () => setState(() {
+                          _obscurePass = !_obscurePass;
+                        }),
+                        icon: Icon(
+                            _obscurePass
+                                ? Icons.visibility_off
+                                : Icons.visibility,
+                            color: grey92)),
+                    obscureText: _obscurePass,
+                    prefixIcon:  Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Icon(Icons.lock_outline, color:  confirmPassController.text.isNotEmpty ?  white: grey92),
+                    ),),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: text(responseValue, color: red, align: TextAlign.start, overflow: TextOverflow.visible),
+                  ),
                   Padding(
                     padding: const EdgeInsets.only(
                         left: 15.0, right: 15.0, top: 10.0, bottom: 10.0),
-                    child: button("RECEIVE MAIL", bgColor: primary, onTap: () async{
-                      resetPassword(mailController.text);
+                    child: button("CONFIRM", bgColor: primary, loading: _loading, colorLoader: white, onTap: () async{
+                      //updateMail(mailController.text);
                     }),
                   ),
                   Expanded(child: Container()),
