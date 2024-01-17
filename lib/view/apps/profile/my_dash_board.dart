@@ -1,3 +1,5 @@
+import 'package:solution/view/apps/profile/my_account.dart';
+
 import '../../widgets/text.dart';
 import 'package:flutter/material.dart';
 import 'package:solution/view/widgets/space.dart';
@@ -25,11 +27,12 @@ class _MyDashBoardState extends State<MyDashBoard> {
               children: [
                 Row(
                   children: [
-                    _itemMenu("imgs/avatar.png", "Earn SATs", (){
+                    _itemMenu("imgs/menu/earnsat.png", "Earn SATs", (){
                     }),
-                    _itemMenu("imgs/avatar.png", "Leaderboard", (){
+                    _itemMenu("imgs/menu/leader.png", "Leaderboard", (){
                     }),
-                    _itemMenu("imgs/avatar.png", "Profile", (){
+                    _itemMenu("imgs/menu/profile.png", "Profile", (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=> const Profile()));
                     })
                   ],
                 )
@@ -43,6 +46,10 @@ class _MyDashBoardState extends State<MyDashBoard> {
 
   _itemMenu(path, label, onTap){
     return   InkWell(
+      focusColor: transparent,
+      highlightColor: transparent,
+      hoverColor: transparent,
+      splashColor: transparent,
       onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
