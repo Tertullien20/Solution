@@ -26,6 +26,7 @@ class _SigninViewState extends State<SigninView> {
   int selectedOptionIndex = -1;
   bool rememberMe = false, _obscurePass = true;
   String responseValue = '';
+  bool _loading = false;
 
 
   @override
@@ -107,8 +108,11 @@ class _SigninViewState extends State<SigninView> {
                       prefixIcon:  Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Icon(Icons.lock_outline, color:  confirmPassController.text.isNotEmpty ?  white: grey92),
-                      ),
-                      validators: [empty, minLength]),
+                      ),),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: text(responseValue, color: red, align: TextAlign.start, overflow: TextOverflow.visible),
+                  ),
                   Expanded(child: Container()),
                 ],
               ),
@@ -117,8 +121,8 @@ class _SigninViewState extends State<SigninView> {
           Padding(
             padding: const EdgeInsets.only(
                 left: 15.0, right: 15.0, top: 10.0, bottom: 10.0),
-            child: button("CONTINUE", bgColor: primary, onTap: () {
-              if(mailController.text.isNotEmpty && passController.text.isNotEmpty){
+            child: button("CONTINUE", bgColor: primary, loading: _loading, colorLoader: white, onTap: () {
+              if(mailController.text.isNotEmpty && passController.text.isNotEmpty && confirmPassController.text.isNotEmpty){
                 String? emailValidationResult = validMail(mailController.text);
 
                 if (emailValidationResult != null) {
@@ -126,14 +130,18 @@ class _SigninViewState extends State<SigninView> {
                     responseValue = emailValidationResult;
                   });
                 } else {
-                  setState(() {
-                    responseValue = '';
-                  });
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => InsertNickName(emailAdress:  mailController.text, password:passController.text)));
-
-                }
-
+                  if(passController.text == confirmPassController.text){
+                    setState(() {
+                      responseValue = '';
+                    });
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => InsertNickName(emailAdress:  mailController.text, password:passController.text)));
+                  } else {
+                    setState(() {
+                      responseValue = 'Les mots de passe ne correspondent pas';
+                    });
+                  }
+              }
               }else {
                 setState(() {
                   responseValue = 'Tous les champs sont requis';

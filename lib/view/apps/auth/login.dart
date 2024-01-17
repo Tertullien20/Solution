@@ -1,10 +1,10 @@
-import '../../../utils/validators/email.dart';
 import '../../widgets/text.dart';
 import '../../widgets/snack_bar.dart';
 import '../profile/my_dash_board.dart';
 import 'package:flutter/material.dart';
 import '../../widgets/remember_me.dart';
 import '../../../services/auth_service.dart';
+import '../../../utils/validators/email.dart';
 import '../../../utils/validators/empty.dart';
 import 'package:solution/view/widgets/space.dart';
 import 'package:solution/view/widgets/input.dart';

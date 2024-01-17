@@ -64,6 +64,9 @@ class AuthenticationService {
       }else if( e.code == 'email-already-in-use') {
         String msg= "Ce mail est déjà relié à un compte existant";
         return msg;
+      }else if (e.code == "too-many-requests"){
+        String msg= "Nous avons bloqué toutes les demandes en provenance de cet appareil en raison d'une activité inhabituelle. Veuillez réessayer plus tard.";
+        return msg;
       }
     }
   }
