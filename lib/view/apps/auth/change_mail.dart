@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:solution/view/apps/auth/login.dart';
 import 'package:solution/view/widgets/button.dart';
 import 'package:solution/utils/constants/colors.dart';
 import 'package:solution/view/widgets/input.dart';
 import 'package:solution/view/widgets/space.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
+import '../../widgets/snack_bar.dart';
 import '../../widgets/text.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -18,9 +19,10 @@ class ChangeMail extends StatefulWidget {
 class _ChangeMailState extends State<ChangeMail> {
   final mailController = TextEditingController();
   final mailConfirmController = TextEditingController();
+  final currentUser = FirebaseAuth.instance.currentUser;
+
   String responseValue = '';
   bool _loading = false;
-
 
   @override
   Widget build(BuildContext context) {
@@ -57,24 +59,33 @@ class _ChangeMailState extends State<ChangeMail> {
                     ],
                   ),
                   space(h: 20.0),
-                  buildInput("Enter your lightning address",mailController, TextInputType.emailAddress, prefixIcon: Image.asset(
-                    "imgs/vector.png",
-                    width: 30.0,
-                    height: 30.0,
-                    color: yellow,
-                  ), maxLines: 1),
+                  buildInput("Enter your lightning address", mailController,
+                      TextInputType.emailAddress,
+                      prefixIcon: Image.asset(
+                        "imgs/vector.png",
+                        width: 30.0,
+                        height: 30.0,
+                        color: yellow,
+                      ),
+                      maxLines: 1),
                   space(h: 20.0),
-                  buildInput("Confirm your lightning address",mailConfirmController, TextInputType.emailAddress, prefixIcon: Image.asset(
-                    "imgs/vector.png",
-                    width: 30.0,
-                    height: 30.0,
-                    color: yellow,
-                  ), maxLines: 1),
+                  buildInput("Confirm your lightning address",
+                      mailConfirmController, TextInputType.emailAddress,
+                      prefixIcon: Image.asset(
+                        "imgs/vector.png",
+                        width: 30.0,
+                        height: 30.0,
+                        color: yellow,
+                      ),
+                      maxLines: 1),
                   Padding(
                     padding: const EdgeInsets.only(
                         left: 15.0, right: 15.0, top: 10.0, bottom: 10.0),
-                    child: button("CONFIRM", bgColor: primary, loading: _loading, colorLoader: white, onTap: () async{
-                      //updateMail(mailController.text);
+                    child: button("CONFIRM",
+                        bgColor: primary,
+                        loading: _loading,
+                        colorLoader: white, onTap: () async {
+                      updateMail(mailController.text, context);
                     }),
                   ),
                   Expanded(child: Container()),
@@ -87,26 +98,51 @@ class _ChangeMailState extends State<ChangeMail> {
     );
   }
 
-  Widget buildInput(String text, controller, keyboardType, {suffixIcon, bool obscureText = false, prefixIcon, validators, maxLines}) {
-
+  Widget buildInput(String text, controller, keyboardType,
+      {suffixIcon,
+      bool obscureText = false,
+      prefixIcon,
+      validators,
+      maxLines}) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: input(controller,
           maxLines: maxLines,
-          obscureText: obscureText ,
-          keyboardType: keyboardType ,
-          colorBorder: primary, colorFont: fillGrey,
-          decoration: textFieldDecoration(text, prefixIcon: prefixIcon , filled: false, suffixIcon: suffixIcon), validators: validators),
+          obscureText: obscureText,
+          keyboardType: keyboardType,
+          colorBorder: primary,
+          colorFont: fillGrey,
+          decoration: textFieldDecoration(text,
+              prefixIcon: prefixIcon, filled: false, suffixIcon: suffixIcon),
+          validators: validators),
     );
   }
 
-  resetPassword(email) async{
-    try{
-      await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
-    }on FirebaseAuthException catch(e){
-      if(e.code == 'user-not-found'){
+  updateMail(newEmail, context) async {
+    setState(() {
+      _loading = true;
+    });
+    try {
+      await currentUser!.updateEmail(newEmail);
+      FirebaseAuth.instance.signOut();
+      ScaffoldMessenger.of(context).showSnackBar(showSnackBar(
+          "Votre email a été mis à jour, veillez vous reconnecter."));
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => const LoginView()),
+          (route) => false);
+    } catch (e) {
+      if (e.toString() ==
+          "[firebase_auth/email-already-in-use] The email address is already in use by another account.") {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(showSnackBar("Cette adresse mail est déjà pris."));
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(showSnackBar(
+            "Vous devez vous reconnecter pour effectuer cette opération"));
       }
     }
-
+    setState(() {
+      _loading = false;
+    });
   }
 }

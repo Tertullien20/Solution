@@ -5,8 +5,11 @@ import 'package:solution/view/widgets/input.dart';
 import 'package:solution/view/widgets/space.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import '../../widgets/snack_bar.dart';
 import '../../widgets/text.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import 'login.dart';
 
 class ChangePassword extends StatefulWidget {
   const ChangePassword({super.key});
@@ -18,6 +21,7 @@ class ChangePassword extends StatefulWidget {
 class _ChangePasswordState extends State<ChangePassword> {
   final passController = TextEditingController();
   final confirmPassController = TextEditingController();
+  final currentUser= FirebaseAuth.instance.currentUser;
   bool _obscurePass = true;
   String responseValue = '';
   bool _loading = false;
@@ -98,7 +102,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                     padding: const EdgeInsets.only(
                         left: 15.0, right: 15.0, top: 10.0, bottom: 10.0),
                     child: button("CONFIRM", bgColor: primary, loading: _loading, colorLoader: white, onTap: () async{
-                      //updateMail(mailController.text);
+                      changePassword(passController.text, context);
                     }),
                   ),
                   Expanded(child: Container()),
@@ -124,12 +128,19 @@ class _ChangePasswordState extends State<ChangePassword> {
     );
   }
 
-  resetPassword(email) async{
+  changePassword(newPassword, context) async{
     try{
-      await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
-    }on FirebaseAuthException catch(e){
-      if(e.code == 'user-not-found'){
-      }
+      await currentUser!.updatePassword(newPassword);
+      FirebaseAuth.instance.signOut();
+      ScaffoldMessenger.of(context).showSnackBar(showSnackBar(
+          "Votre mot de passe a été mis à jour, veillez vous reconnecter"));
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => const LoginView()),
+              (route) => false);
+    }catch(e){
+      ScaffoldMessenger.of(context).showSnackBar(showSnackBar(
+          "Vous devez vous reconnecter pour effectuer cette opération"));
     }
 
   }

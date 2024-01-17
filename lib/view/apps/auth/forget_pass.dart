@@ -5,6 +5,8 @@ import 'package:solution/view/widgets/input.dart';
 import 'package:solution/view/widgets/space.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import '../../../utils/validators/email.dart';
+import '../../widgets/snack_bar.dart';
 import '../../widgets/text.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -19,7 +21,6 @@ class _ForgetPassState extends State<ForgetPass> {
   final mailController = TextEditingController();
   String responseValue = '';
   bool _loading = false;
-
 
   @override
   Widget build(BuildContext context) {
@@ -56,18 +57,40 @@ class _ForgetPassState extends State<ForgetPass> {
                     ],
                   ),
                   space(h: 20.0),
-                  buildInput("Enter your lightning address",mailController, TextInputType.emailAddress, prefixIcon: Image.asset(
-                    "imgs/vector.png",
-                    width: 30.0,
-                    height: 30.0,
-                    color: yellow,
-                  ), maxLines: 1),
+                  buildInput("Enter your lightning address", mailController,
+                      TextInputType.emailAddress,
+                      prefixIcon: Image.asset(
+                        "imgs/vector.png",
+                        width: 30.0,
+                        height: 30.0,
+                        color: yellow,
+                      ),
+                      maxLines: 1),
                   Padding(
                     padding: const EdgeInsets.only(
                         left: 15.0, right: 15.0, top: 10.0, bottom: 10.0),
-                    child: button("RECEIVE MAIL", bgColor: primary, onTap: () async{
-                      resetPassword(mailController.text);
+                    child: button("RECEIVE MAIL",
+                        bgColor: primary,
+                        loading: _loading,
+                        colorLoader: white, onTap: () async {
+                      if(mailController.text.isNotEmpty){
+                        String? emailValidationResult = validMail(mailController.text);
+
+                        if (emailValidationResult != null) {
+                          setState(() {
+                            responseValue = emailValidationResult;
+                          });
+                        }else {
+                          resetPassword(mailController.text, context);
+                        }
+                      } else {
+                        responseValue = 'Renseignez votre mail';
+                      }
                     }),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: text(responseValue, color: red, align: TextAlign.start, overflow: TextOverflow.visible),
                   ),
                   Expanded(child: Container()),
                 ],
@@ -79,26 +102,49 @@ class _ForgetPassState extends State<ForgetPass> {
     );
   }
 
-  Widget buildInput(String text, controller, keyboardType, {suffixIcon, bool obscureText = false, prefixIcon, validators, maxLines}) {
-
+  Widget buildInput(String text, controller, keyboardType,
+      {suffixIcon,
+      bool obscureText = false,
+      prefixIcon,
+      validators,
+      maxLines}) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: input(controller,
           maxLines: maxLines,
-          obscureText: obscureText ,
-          keyboardType: keyboardType ,
-          colorBorder: primary, colorFont: fillGrey,
-          decoration: textFieldDecoration(text, prefixIcon: prefixIcon , filled: false, suffixIcon: suffixIcon), validators: validators),
+          obscureText: obscureText,
+          keyboardType: keyboardType,
+          colorBorder: primary,
+          colorFont: fillGrey,
+          decoration: textFieldDecoration(text,
+              prefixIcon: prefixIcon, filled: false, suffixIcon: suffixIcon),
+          validators: validators),
     );
   }
 
-  resetPassword(email) async{
-    try{
+  resetPassword(email, context) async {
+    setState(() {
+      responseValue = '';
+      _loading = true;
+    });
+    try {
       await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
-    }on FirebaseAuthException catch(e){
-      if(e.code == 'user-not-found'){
+      ScaffoldMessenger.of(context).showSnackBar(
+          showSnackBar("Nous vous avons envoyé un mail pour la récupération."));
+    } on FirebaseAuthException catch (e) {
+      print(e);
+      if(e.toString() == "[firebase_auth/invalid-email] The email address is badly formatted."){
+        setState(() {
+          responseValue = "Adresse mail invalide";
+        });
+      }
+      if (e.code == 'user-not-found') {
+        ScaffoldMessenger.of(context).showSnackBar(
+            showSnackBar("Pas d'utilisateur trouvé pour ce mail"));
       }
     }
-
+    setState(() {
+      _loading = false;
+    });
   }
 }
