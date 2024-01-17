@@ -76,6 +76,7 @@ flutter:
   assets:
     - imgs/avatar.png
     - imgs/vector.png
+    - imgs/back_rect.png
     - imgs/menu/leader.png
     - imgs/menu/profile.png
     - imgs/menu/earnsat.png

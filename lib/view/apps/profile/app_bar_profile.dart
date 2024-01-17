@@ -12,7 +12,7 @@ class MyProfileAppBar extends StatelessWidget {
       expandedTitleScale: 2.0,
       centerTitle: true,
       background: Image.asset(
-        'img/others/background_app.png',
+        'imgs/back_rect.png',
         fit: BoxFit.cover,
         height: 100,
       ),
