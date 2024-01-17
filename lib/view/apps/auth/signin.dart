@@ -131,12 +131,18 @@ class _SigninViewState extends State<SigninView> {
                   });
                 } else {
                   if(passController.text == confirmPassController.text){
-                    setState(() {
-                      responseValue = '';
-                    });
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => InsertNickName(emailAdress:  mailController.text, password:passController.text)));
-                  } else {
+                    if(passController.text.length > 6){
+                      setState(() {
+                        responseValue = '';
+                      });
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => InsertNickName(emailAdress:  mailController.text, password:passController.text)));
+                    } else{
+                      setState(() {
+                        responseValue = 'Minimum 6 caractères';
+                      });
+                    }
+               } else {
                     setState(() {
                       responseValue = 'Les mots de passe ne correspondent pas';
                     });
