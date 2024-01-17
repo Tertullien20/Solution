@@ -8,14 +8,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../../widgets/text.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class ForgetPass extends StatefulWidget {
-  const ForgetPass({super.key});
+class ChangePassword extends StatefulWidget {
+  const ChangePassword({super.key});
 
   @override
-  State<ForgetPass> createState() => _ForgetPassState();
+  State<ChangePassword> createState() => _ChangePasswordState();
 }
 
-class _ForgetPassState extends State<ForgetPass> {
+class _ChangePasswordState extends State<ChangePassword> {
   final mailController = TextEditingController();
   String responseValue = '';
   bool _loading = false;

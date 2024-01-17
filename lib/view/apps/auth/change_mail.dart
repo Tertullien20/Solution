@@ -8,15 +8,16 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../../widgets/text.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class ForgetPass extends StatefulWidget {
-  const ForgetPass({super.key});
+class ChangeMail extends StatefulWidget {
+  const ChangeMail({super.key});
 
   @override
-  State<ForgetPass> createState() => _ForgetPassState();
+  State<ChangeMail> createState() => _ChangeMailState();
 }
 
-class _ForgetPassState extends State<ForgetPass> {
+class _ChangeMailState extends State<ChangeMail> {
   final mailController = TextEditingController();
+  final mailConfirmController = TextEditingController();
   String responseValue = '';
   bool _loading = false;
 
@@ -62,11 +63,18 @@ class _ForgetPassState extends State<ForgetPass> {
                     height: 30.0,
                     color: yellow,
                   ), maxLines: 1),
+                  space(h: 20.0),
+                  buildInput("Confirm your lightning address",mailConfirmController, TextInputType.emailAddress, prefixIcon: Image.asset(
+                    "imgs/vector.png",
+                    width: 30.0,
+                    height: 30.0,
+                    color: yellow,
+                  ), maxLines: 1),
                   Padding(
                     padding: const EdgeInsets.only(
                         left: 15.0, right: 15.0, top: 10.0, bottom: 10.0),
-                    child: button("RECEIVE MAIL", bgColor: primary, onTap: () async{
-                      resetPassword(mailController.text);
+                    child: button("CONFIRM", bgColor: primary, loading: _loading, colorLoader: white, onTap: () async{
+                      //updateMail(mailController.text);
                     }),
                   ),
                   Expanded(child: Container()),
