@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:solution/view/apps/auth/forget_pass.dart';
 import 'package:solution/view/apps/auth/signin.dart';
 import 'package:solution/view/widgets/button.dart';
 import 'package:solution/utils/constants/colors.dart';
@@ -93,10 +94,15 @@ class _LoginViewState extends State<LoginView> {
                             });
                           },
                         ),
-                        Row(
-                          children: [
-                            boldText('Forget password?', color: white, size: 16.0),
-                          ],
+                        InkWell(
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> const  ForgetPass()));
+                          },
+                          child: Row(
+                            children: [
+                              boldText('Forget password?', color: white, size: 16.0),
+                            ],
+                          ),
                         )
                       ],
                     ),
