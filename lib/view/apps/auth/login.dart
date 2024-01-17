@@ -5,10 +5,8 @@ import 'package:flutter/material.dart';
 import '../../widgets/remember_me.dart';
 import '../../../services/auth_service.dart';
 import '../../../utils/validators/email.dart';
-import '../../../utils/validators/empty.dart';
 import 'package:solution/view/widgets/space.dart';
 import 'package:solution/view/widgets/input.dart';
-import '../../../utils/validators/min_length.dart';
 import 'package:solution/view/widgets/button.dart';
 import 'package:solution/view/apps/auth/signin.dart';
 import 'package:solution/utils/constants/colors.dart';
@@ -78,7 +76,7 @@ class _LoginViewState extends State<LoginView> {
                   }), icon: Icon(_obscurePass ? Icons.visibility_off: Icons.visibility, color: grey92)), obscureText: _obscurePass, prefixIcon:  Padding(
                     padding:  const EdgeInsets.all(8.0),
                     child: Icon(Icons.lock_outline, color: passController.text.isNotEmpty ? white: grey92),
-                  ), validators: [empty, minLength]),
+                  )),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Row(

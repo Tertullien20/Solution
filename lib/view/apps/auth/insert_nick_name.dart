@@ -4,7 +4,6 @@ import 'package:solution/utils/constants/colors.dart';
 import 'package:solution/view/widgets/input.dart';
 import 'package:solution/view/widgets/space.dart';
 import '../../../services/auth_service.dart';
-import '../../../utils/validators/empty.dart';
 import '../../widgets/snack_bar.dart';
 import '../../widgets/text.dart';
 import '../../../provider/language/app_localizations.dart';
@@ -79,7 +78,6 @@ class _InsertNickNameState extends State<InsertNickName> {
                   ),
                   space(h: 20.0),
                   buildInput("NickName", nickNameController, TextInputType.text,
-                      validators: [empty],
                       maxLines: 1,
                       suffixIcon: IconButton(
                           onPressed: () {

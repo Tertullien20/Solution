@@ -4,8 +4,6 @@ import 'package:solution/utils/constants/colors.dart';
 import 'package:solution/view/widgets/input.dart';
 import 'package:solution/view/widgets/space.dart';
 import '../../../utils/validators/email.dart';
-import '../../../utils/validators/empty.dart';
-import '../../../utils/validators/min_length.dart';
 import '../../widgets/text.dart';
 import '../../../provider/language/app_localizations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -91,8 +89,7 @@ class _SigninViewState extends State<SigninView> {
                       prefixIcon:  Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Icon(Icons.lock_outline, color:  passController.text.isNotEmpty ?  white: grey92),
-                      ),
-                      validators: [empty, minLength]),
+                      ),),
                   buildInput("Confirm Password", confirmPassController,
                       TextInputType.visiblePassword,
                       suffixIcon: IconButton(
