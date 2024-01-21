@@ -12,3 +12,5 @@ const Color yellow = Color(0xFFFBB11C);
 const Color grey92 = Color(0xFF929292);
 const Color red = Color(0xFFDE453B);
 const Color grey2C = Color(0xFF2C3140);
+const Color green = Color(0xFF0F9D58);
+const Color dark = Color(0xFF13203B);

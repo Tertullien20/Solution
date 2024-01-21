@@ -9,7 +9,7 @@ Widget input(TextEditingController controller,
     int? maxLines,
     onChanged,
     bool enabled = true,
-    colorBorder = secondary, colorFont}) {
+    colorBorder = secondary, colorFont, colorTxt = white}) {
   return Container(
     //padding: const EdgeInsets.all(4.0),
       decoration: BoxDecoration(
@@ -22,7 +22,7 @@ Widget input(TextEditingController controller,
         decoration: decoration,
         obscureText: obscureText,
         keyboardType: keyboardType,
-        style: const TextStyle(color: white),
+        style: TextStyle(color: colorTxt),
         validator: (val) {
           if (validators != null) {
             for (var e in validators) {
