@@ -73,6 +73,13 @@ class _DefineLanguageState extends State<DefineLanguage> {
                       "Spanish (Español)", 1, const Locale("es", "ES")),
                   itemLanguage("imgs/flag/flag_french.png", "France (France)",
                       2, const Locale("fr", "FR")),
+
+                  itemLanguage("imgs/flag/flag_french.png", "Italian",
+                      3, const Locale("it", "IT")),
+                  itemLanguage("imgs/flag/flag_french.png", "Russian",
+                      4, const Locale("ru", "RU")),
+                  itemLanguage("imgs/flag/flag_french.png", "Chinese",
+                      5, const Locale("zh", "ZH")),
                   Expanded(child: Container()),
                 ],
               ),
@@ -81,7 +88,7 @@ class _DefineLanguageState extends State<DefineLanguage> {
           Padding(
             padding: const EdgeInsets.only(
                 left: 15.0, right: 15.0, top: 10.0, bottom: 10.0),
-            child: button("CONFIRM", bgColor: primary, onTap: () {
+            child: button(AppLocalizations(context).translate("confirm"), bgColor: primary, onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => const LoginView()));
             }),

@@ -21,29 +21,29 @@ class AuthenticationService {
     }   on FirebaseAuthException catch(e) {
       print(e.code);
       if(e.code =='user-not-found')  {
-        String msg= "Pas d'utilisateur trouvé pour cet email";
+        String msg= "No user found for this email";
         return msg;
       }else if(e.code=="wrong-password") {
-        String msg= "Email ou mot de pass incorrect.";
+        String msg= "Email or password incorrect.";
         return msg;
       }  else if(e.code == 'invalid-credential'){
-        String msg= "Vos identifiants sont incorrects.";
+        String msg= "Your credentials are incorrect.";
         return msg;
       } else if(e.code == 'operation-not-allowed'){
-        String msg= "L'opération de connexion a été désactivée pour le moment.";
+        String msg= "Login operation has been disabled for now.";
         return msg;
       }else if(e.code == 'user-disabled'){
-        String msg= "Ce compte a été désactivé.";
+        String msg= "This account has been deactivated.";
         return msg;
       } else if(e.code == 'invalid-email'){
-        String msg= "Adresse mail invalide.";
+        String msg= "Invalid email address.";
         return msg;
       } else if (e.code == "too-many-requests"){
-        String msg= "Nous avons bloqué toutes les demandes en provenance de cet appareil en raison d'une activité inhabituelle. Veuillez réessayer plus tard.";
+        String msg= "We have blocked all requests from this device due to unusual activity. Please try again later.";
         return msg;
       }
       else {
-        String msg= "Vérifiez votre connexion internet puis réessayer";
+        String msg= "Check your internet connection and try again.";
         return msg;
       }
     }

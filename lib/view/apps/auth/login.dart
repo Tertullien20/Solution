@@ -96,7 +96,7 @@ class _LoginViewState extends State<LoginView> {
                           },
                           child: Row(
                             children: [
-                              boldText('Forget password?', color: white, size: 16.0),
+                              boldText(AppLocalizations(context).translate("forget_password"), color: white, size: 16.0),
                             ],
                           ),
                         )

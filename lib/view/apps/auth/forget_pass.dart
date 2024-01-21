@@ -70,7 +70,7 @@ class _ForgetPassState extends State<ForgetPass> {
                   Padding(
                     padding: const EdgeInsets.only(
                         left: 15.0, right: 15.0, top: 10.0, bottom: 10.0),
-                    child: button("RECEIVE MAIL",
+                    child: button(AppLocalizations(context).translate("receive_mail"),
                         bgColor: primary,
                         loading: _loading,
                         colorLoader: white, onTap: () async {

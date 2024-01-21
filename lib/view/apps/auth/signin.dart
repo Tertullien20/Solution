@@ -147,7 +147,7 @@ class _SigninViewState extends State<SigninView> {
               }
               }else {
                 setState(() {
-                  responseValue = "Tous les champs sont requis";// AppLocalizations(context).translate("allfields");
+                  responseValue = "All fields are required.";// AppLocalizations(context).translate("allfields");
                 });
 
               }
