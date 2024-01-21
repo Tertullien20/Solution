@@ -136,12 +136,10 @@ class _LoginViewState extends State<LoginView> {
                           setState(() {
                             _loading = false;
                           });
-                          /*Navigator.push(context,
-                          MaterialPageRoute(builder: (context) =>  const MyDashBoard()));*/
                         }
                       }else {
                         setState(() {
-                          responseValue = AppLocalizations(context).translate("user_not_found_for_email"));
+                          responseValue = AppLocalizations(context).translate("user_not_found_for_email");
                         });
                       }
                     }),
