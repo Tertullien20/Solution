@@ -45,7 +45,7 @@ class _SigninViewState extends State<SigninView> {
                 child: Row(children: [
                   const Icon(FontAwesomeIcons.arrowLeft, color: white),
                   space(w: 10.0),
-                  text("Previous", color: white)
+                  text(AppLocalizations(context).translate("previous"), color: white)
                 ]),
               ),
             ),
