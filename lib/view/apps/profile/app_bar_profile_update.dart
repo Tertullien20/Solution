@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../../utils/constants/colors.dart';
 import '../../widgets/text.dart';
 
 class MyProfileAppBarUpdate extends StatelessWidget {
