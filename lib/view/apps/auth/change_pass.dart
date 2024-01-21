@@ -102,7 +102,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                   Padding(
                     padding: const EdgeInsets.only(
                         left: 15.0, right: 15.0, top: 10.0, bottom: 10.0),
-                    child: button("CONFIRM", bgColor: primary, loading: _loading, colorLoader: white, onTap: () async{
+                    child: button(AppLocalizations(context).translate("confirm"), bgColor: primary, loading: _loading, colorLoader: white, onTap: () async{
                       changePassword(passController.text, context);
                     }),
                   ),

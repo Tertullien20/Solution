@@ -88,7 +88,7 @@ class _LoginViewState extends State<LoginView> {
                             setState(() {
                               rememberMe = newValue!;
                             });
-                          },
+                          },context
                         ),
                         InkWell(
                           onTap: (){
@@ -106,7 +106,7 @@ class _LoginViewState extends State<LoginView> {
                   Padding(
                     padding: const EdgeInsets.only(
                         left: 15.0, right: 15.0, top: 10.0, bottom: 10.0),
-                    child: button("SIGN IN", bgColor: primary, loading: _loading, colorLoader: white, onTap: () async{
+                    child: button(AppLocalizations(context).translate("signin"), bgColor: primary, loading: _loading, colorLoader: white, onTap: () async{
 
                       if(mailController.text.isNotEmpty && passController.text.isNotEmpty){
                         String? emailValidationResult = validMail(mailController.text);

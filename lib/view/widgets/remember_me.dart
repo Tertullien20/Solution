@@ -1,9 +1,10 @@
+import '../../provider/language/app_localizations.dart';
 import 'text.dart';
 import 'space.dart';
 import 'package:flutter/material.dart';
 import '../../utils/constants/colors.dart';
 
-Widget rememberMeCheckbox(bool value, Function(bool?) onChanged) {
+Widget rememberMeCheckbox(bool value, Function(bool?) onChanged, context) {
   return InkWell(
     onTap: () {
       onChanged(!value);
@@ -27,7 +28,7 @@ Widget rememberMeCheckbox(bool value, Function(bool?) onChanged) {
           ),
         ),
         space(w: 8.0),
-        text("Remember Me", color: white, size: 16.0),
+        text(AppLocalizations(context).translate("remember"), color: white, size: 16.0),
       ],
     ),
   );
