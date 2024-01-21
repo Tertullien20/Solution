@@ -7,8 +7,8 @@ class MyProfileAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     return FlexibleSpaceBar(
-      expandedTitleScale: 2.0,
       centerTitle: true,
       background: Image.asset(
         'imgs/back_rect.png',
@@ -17,7 +17,6 @@ class MyProfileAppBar extends StatelessWidget {
       ),
       title: Stack(
         children: [
-          // Your existing content (Go back and Edit buttons)
           Positioned(
             left: 30.0,
             top: 40.0,
@@ -56,15 +55,13 @@ class MyProfileAppBar extends StatelessWidget {
             ),
           ),
           Positioned(
-            bottom: 0,
+            top: 55,
             left: 0,
             right: 0,
+            //bottom: 80,
             child: Container(
               alignment: Alignment.center,
-              child: CircleAvatar(
-                backgroundImage: AssetImage('imgs/avatar.png'),
-                radius: 50, // Adjust the size as needed
-              ),
+              child: Image.asset('imgs/avatar.png',),
             ),
           ),
         ],

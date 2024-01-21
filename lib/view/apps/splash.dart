@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:solution/view/apps/first.dart';
 
 import '../widgets/bg_view.dart';
+import 'auth/wrapper.dart';
 
 class Splash extends StatefulWidget {
 
@@ -17,7 +18,7 @@ class _SplashState extends State<Splash> {
   void initState() {
     super.initState();
     Future.delayed( const Duration(seconds: 4),
-            ()=> Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder:(context) => const FirstView()), (route) => false));
+            ()=> Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder:(context) => const Wrapper()), (route) => false));
   }
 
   @override

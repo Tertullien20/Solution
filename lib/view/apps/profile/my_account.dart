@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
-
+import 'package:solution/utils/constants/colors.dart';
+import 'package:solution/view/apps/first.dart';
+import 'package:solution/view/widgets/space.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../../../services/auth_service.dart';
+import '../../widgets/text.dart';
+import '../auth/login.dart';
+import '../define_language.dart';
 import 'app_bar_profile.dart';
 
 class Profile extends StatefulWidget {
@@ -10,13 +17,123 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  final AuthenticationService _auth= AuthenticationService();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: secondary,
       appBar: AppBar(
-        toolbarHeight: 180.0,
+        toolbarHeight: 160.0,
         automaticallyImplyLeading: false,
         flexibleSpace: const MyProfileAppBar(),
+      ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top:30.0, left: 15.0),
+            child: Row(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    text("Nickname", color: white),
+                    boldText("Michel Angelo", color: white, size: 22.0)
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top:30.0, left: 15.0),
+            child: Row(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    text("Lightning Address", color: white),
+                    Row(
+                      children: [
+                        Image.asset('imgs/vector.png'),
+                        space(w: 5.0),
+                        text("michelangelo@gmail.com", color: white),
+                      ],
+                    )
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    text("Language", color: white),
+                  ],
+                ),
+                space(h: 10.0),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> const DefineLanguage()));
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(15.0),
+                    decoration: BoxDecoration(color: grey2C,
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    child: Row(
+                      children: [
+                        Row(
+                          children: [
+                            const Icon(FontAwesomeIcons.earthAfrica, color: white),
+                            space(w: 10.0),
+                            boldText("United Kingdom (British)", color: white)
+                          ],
+                        ),
+                        const Spacer(),
+                        Row(
+                          children: [
+                            Image.asset(
+                              "imgs/flag/flag_english.png",
+                              width: 20.0,
+                              height: 20.0,
+                            ),
+                            space(w: 10.0),
+                            const Icon(
+                              Icons.keyboard_arrow_right,
+                              color: white,
+                              size: 25.0,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Expanded(child: Container()),
+          InkWell(
+            onTap: (){
+              _auth.signOut();
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => const FirstView()),
+                      (route) => false);            },
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [text('Log out', color: white),space(w: 10.0),
+                  Image.asset("imgs/logout.png", color: white)
+                ],
+              ),
+            ),
+          )
+        ],
       ),
     );
   }
