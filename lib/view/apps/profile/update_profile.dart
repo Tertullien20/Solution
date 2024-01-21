@@ -100,12 +100,10 @@ class _UpdateProfileState extends State<UpdateProfile> {
                       ],
                     ),
                   )
-                ],)
+                ])
               ],
             ),
-
           );
-
         }else{
           return  Scaffold(
             body: Container(
