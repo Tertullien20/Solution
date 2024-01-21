@@ -387,6 +387,17 @@ class AppLocalizations {
       "zh": "赚取 SAT",
     },
 
+    "profile_updated_success": {
+      "en": "Profile successfully updated",
+      "fr": "Profil modifié avec succès",
+      "es": "Perfil actualizado con éxito",
+      "de": "Profil erfolgreich aktualisiert",
+      "it": "Profilo aggiornato con successo",
+      "ru": "Профиль успешно обновлен",
+      "zh": "成功更新个人资料",
+    },
+
+
 
 
 

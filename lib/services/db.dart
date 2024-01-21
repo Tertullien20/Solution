@@ -34,7 +34,7 @@ class Database {
   userCollection.doc(uid).update({
     "name": appUserData.name,
   }).then((value) {
-    print("Données utilisateur modifiées avec succès");
+    print("Profile successfully updated");
   }).catchError((onError){
     print(onError);
   });
