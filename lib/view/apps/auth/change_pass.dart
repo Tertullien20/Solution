@@ -5,6 +5,7 @@ import 'package:solution/view/widgets/input.dart';
 import 'package:solution/view/widgets/space.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import '../../../provider/language/app_localizations.dart';
 import '../../widgets/snack_bar.dart';
 import '../../widgets/text.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -45,7 +46,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                 child: Row(children: [
                   const Icon(FontAwesomeIcons.arrowLeft, color: white),
                   space(w: 10.0),
-                  text("Back", color: white)
+                  text(AppLocalizations(context).translate("back"), color: white)
                 ]),
               ),
             ),
@@ -63,7 +64,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                   ),
                   space(h: 20.0),
                   buildInput(
-                      "Password", passController, TextInputType.visiblePassword,
+                    AppLocalizations(context).translate("password"), passController, TextInputType.visiblePassword,
                       suffixIcon: IconButton(
                           onPressed: () => setState(() {
                             _obscurePass = !_obscurePass;
@@ -78,7 +79,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                         padding: const EdgeInsets.all(8.0),
                         child: Icon(Icons.lock_outline, color:  passController.text.isNotEmpty ?  white: grey92),
                       ),),
-                  buildInput("Confirm Password", confirmPassController,
+                  buildInput(AppLocalizations(context).translate("confirm_password"), confirmPassController,
                     TextInputType.visiblePassword,
                     suffixIcon: IconButton(
                         onPressed: () => setState(() {

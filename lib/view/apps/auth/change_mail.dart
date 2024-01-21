@@ -5,6 +5,7 @@ import 'package:solution/utils/constants/colors.dart';
 import 'package:solution/view/widgets/input.dart';
 import 'package:solution/view/widgets/space.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import '../../../provider/language/app_localizations.dart';
 import '../../widgets/snack_bar.dart';
 import '../../widgets/text.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -42,7 +43,7 @@ class _ChangeMailState extends State<ChangeMail> {
                 child: Row(children: [
                   const Icon(FontAwesomeIcons.arrowLeft, color: white),
                   space(w: 10.0),
-                  text("Back", color: white)
+                  text(AppLocalizations(context).translate("back"), color: white)
                 ]),
               ),
             ),
@@ -59,7 +60,7 @@ class _ChangeMailState extends State<ChangeMail> {
                     ],
                   ),
                   space(h: 20.0),
-                  buildInput("Enter your lightning address", mailController,
+                  buildInput(AppLocalizations(context).translate("enter_mail"), mailController,
                       TextInputType.emailAddress,
                       prefixIcon: Image.asset(
                         "imgs/vector.png",

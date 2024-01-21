@@ -5,6 +5,7 @@ import 'package:solution/view/widgets/input.dart';
 import 'package:solution/view/widgets/space.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import '../../../provider/language/app_localizations.dart';
 import '../../../utils/validators/email.dart';
 import '../../widgets/snack_bar.dart';
 import '../../widgets/text.dart';
@@ -40,7 +41,7 @@ class _ForgetPassState extends State<ForgetPass> {
                 child: Row(children: [
                   const Icon(FontAwesomeIcons.arrowLeft, color: white),
                   space(w: 10.0),
-                  text("Back", color: white)
+                  text(AppLocalizations(context).translate("back"), color: white)
                 ]),
               ),
             ),
@@ -52,12 +53,12 @@ class _ForgetPassState extends State<ForgetPass> {
                 children: [
                   Row(
                     children: [
-                      boldText('Enter your lightning address',
+                      boldText(AppLocalizations(context).translate("enter_mail"),
                           color: white, size: 30.0, align: TextAlign.start),
                     ],
                   ),
                   space(h: 20.0),
-                  buildInput("Enter your lightning address", mailController,
+                  buildInput(AppLocalizations(context).translate("enter_mail"), mailController,
                       TextInputType.emailAddress,
                       prefixIcon: Image.asset(
                         "imgs/vector.png",

@@ -4,6 +4,7 @@ import 'package:solution/view/widgets/button.dart';
 import 'package:solution/view/widgets/input.dart';
 import 'package:provider/provider.dart';
 import '../../../model/user_app.dart';
+import '../../../provider/language/app_localizations.dart';
 import '../../../services/db.dart';
 import '../../widgets/loader.dart';
 import '../../widgets/snack_bar.dart';
@@ -56,7 +57,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                       child: Row(children: [
                         const Icon(FontAwesomeIcons.arrowLeft, color: white),
                         space(w: 10.0),
-                        text(" Go Back", color: white)
+                        text(AppLocalizations(context).translate("back"), color: white)
                       ]),
                     ),
                   ),

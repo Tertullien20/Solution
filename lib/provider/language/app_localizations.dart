@@ -8,11 +8,11 @@ class AppLocalizations {
   AppLocalizations(this.context);
 
   final Map<String, Map<String, String>> _translations = {
-    "hello_text": {
-      "en": "Hello",
-      "fr": "Bonjour",
-      "es": "Hola",
-      "de": "Hallo",
+    "back": {
+      "en": "Back",
+      "fr": "Retour",
+      "es": "Volver",
+      "de": "Zurück",
     },
     "welcome_message": {
       "en": "Welcome",
@@ -62,6 +62,86 @@ class AppLocalizations {
       "es": "Esto es lo que ven los demás miembros de la comunidad.",
       "de": "Das ist es, was andere Mitglieder der Gemeinschaft sehen.",
     },
+    'enter_mail': {
+      "en": "Enter your lightning address",
+      "fr": "Saisissez votre adresse mail",
+      "es": "Introduzca su dirección de rayos",
+      "de": "Geben Sie Ihre Blitzadresse ein",
+    },
+    'password': {
+      "en": "Password",
+      "fr": "Mot de passe",
+      "es": "Contraseña",
+      "de": "Passwort",
+    },
+    'confirm_password': {
+      "en": "Confirm password",
+      "fr": "Confirmer le mot de passe",
+      "es": "Confirmar contraseña",
+      "de": "Bestätigen Sie das Passwort",
+    },
+    "continue": {
+      "en": "Continue",
+      "fr": "Continue",
+      "es": "Continúe en",
+      "de": "Weiter",
+    },
+    "previous": {
+      "en": "Previous",
+      "fr": "Précédent",
+      "es": "Anterior",
+      "de": "Vorherige",
+    },
+    "confirm": {
+      "en": "Confirm",
+      "fr": "Confirmer",
+      "es": "Confirmar",
+      "de": "Bestätigen",
+    },
+    "remember": {
+      "en": "Remember",
+      "fr": "Se souvenir",
+      "es": "Recordar",
+      "de": "Erinnern",
+    },
+    "signin": {
+      "en": "Sign In",
+      "fr": "Se connecter",
+      "es": "Iniciar sesión",
+      "de": "Anmelden",
+    },
+    "allfields": {
+      "en": "All fields are required",
+      "fr": "Tous les champs sont requis",
+      "es": "Todos los campos son obligatorios",
+      "de": "Alle Felder sind erforderlich",
+    },
+    "password_mismatch": {
+      "en": "Passwords do not match",
+      "fr": "Les mots de passe ne correspondent pas",
+      "es": "Las contraseñas no coinciden",
+      "de": "Passwörter stimmen nicht überein",
+    },
+    "min_characters": {
+      "en": "Minimum 6 characters",
+      "fr": "Minimum 6 caractères",
+      "es": "Mínimo 6 caracteres",
+      "de": "Mindestens 6 Zeichen",
+    },
+    "invalid_email": {
+      "en": "Invalid email address",
+      "fr": "Adresse e-mail invalide",
+      "es": "Dirección de correo electrónico no válida",
+      "de": "Ungültige E-Mail-Adresse",
+    }
+
+
+
+
+
+
+
+
   };
 
   String translate(String key) {

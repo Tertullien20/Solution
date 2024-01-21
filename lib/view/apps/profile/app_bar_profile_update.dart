@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../../provider/language/app_localizations.dart';
+import '../../../utils/constants/colors.dart';
 import '../../widgets/text.dart';
 
 class MyProfileAppBarUpdate extends StatelessWidget {
@@ -25,7 +27,7 @@ class MyProfileAppBarUpdate extends StatelessWidget {
                     },
                     child: Image.asset('imgs/left.png'),
                   ),
-                  text("Go back"),
+                  text(AppLocalizations(context).translate("back"), color: white)
                 ],
               ),
             ),

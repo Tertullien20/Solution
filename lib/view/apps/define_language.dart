@@ -38,7 +38,8 @@ class _DefineLanguageState extends State<DefineLanguage> {
                 child: Row(children: [
                   const Icon(FontAwesomeIcons.arrowLeft, color: white),
                   const SizedBox(width: 10),
-                  text("Back", color: white)
+                  text(AppLocalizations(context).translate("back"), color: white)
+
                 ]),
               ),
             ),

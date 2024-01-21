@@ -48,7 +48,7 @@ class _LoginViewState extends State<LoginView> {
                 child: Row(children: [
                   const Icon(FontAwesomeIcons.arrowLeft, color: white),
                   space(w: 10.0),
-                  text("Back", color: white)
+                  text(AppLocalizations(context).translate("back"), color: white)
                 ]),
               ),
             ),
@@ -65,13 +65,13 @@ class _LoginViewState extends State<LoginView> {
                     ],
                   ),
                   space(h: 20.0),
-                  buildInput("Enter your lightning address",mailController, TextInputType.emailAddress, prefixIcon: Image.asset(
+                  buildInput(AppLocalizations(context).translate("enter_mail"),mailController, TextInputType.emailAddress, prefixIcon: Image.asset(
                     "imgs/vector.png",
                     width: 30.0,
                     height: 30.0,
                     color: yellow,
                   ), maxLines: 1),
-                  buildInput("Password",passController, TextInputType.visiblePassword, suffixIcon: IconButton(onPressed: ()=> setState(() {
+                  buildInput(AppLocalizations(context).translate("password"),passController, TextInputType.visiblePassword, suffixIcon: IconButton(onPressed: ()=> setState(() {
                     _obscurePass = !_obscurePass;
                   }), icon: Icon(_obscurePass ? Icons.visibility_off: Icons.visibility, color: grey92)), obscureText: _obscurePass, prefixIcon:  Padding(
                     padding:  const EdgeInsets.all(8.0),

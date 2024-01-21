@@ -102,7 +102,7 @@ class _InsertNickNameState extends State<InsertNickName> {
           Padding(
             padding: const EdgeInsets.only(
                 left: 15.0, right: 15.0, top: 10.0, bottom: 10.0),
-            child: button("CONTINUE", bgColor: primary, loading: _loading, colorLoader: white, onTap: () async {
+            child: button(AppLocalizations(context).translate("continue"), bgColor: primary, loading: _loading, colorLoader: white, onTap: () async {
               if (nickNameController.text.isNotEmpty) {
                 setState(() {
                   responseValue = '';

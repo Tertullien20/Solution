@@ -8,7 +8,6 @@ import '../../../model/user_app.dart';
 import '../../../services/auth_service.dart';
 import '../../../services/db.dart';
 import '../../widgets/text.dart';
-import '../auth/login.dart';
 import '../define_language.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
@@ -23,20 +22,20 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  final AuthenticationService _auth= AuthenticationService();
+
   User? userT= FirebaseAuth.instance.currentUser;
 
 
   @override
   Widget build(BuildContext context) {
     final user= Provider.of<UserApp?>(context);
-    print(userT!.email);
 
     return StreamBuilder<AppUserData>(
       stream: Database(user!.uid).user,
       builder:(context, snapshot){
         if(snapshot.hasData){
           AppUserData? userData= snapshot.data;
-          print(userData);
 
           return Scaffold(
             backgroundColor: secondary,
@@ -135,7 +134,7 @@ class _ProfileState extends State<Profile> {
                 Expanded(child: Container()),
                 InkWell(
                   onTap: (){
-                    //_auth.signOut();
+                    _auth.signOut();
                     Navigator.pushAndRemoveUntil(
                         context,
                         MaterialPageRoute(builder: (context) => const FirstView()),

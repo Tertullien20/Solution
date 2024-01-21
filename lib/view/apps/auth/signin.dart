@@ -65,7 +65,7 @@ class _SigninViewState extends State<SigninView> {
                     ],
                   ),
                   space(h: 20.0),
-                  buildInput("Enter your lightning address", mailController,
+                  buildInput(AppLocalizations(context).translate("enter_mail"), mailController,
                       TextInputType.emailAddress,
                       prefixIcon: Image.asset(
                         "imgs/vector.png",
@@ -75,7 +75,7 @@ class _SigninViewState extends State<SigninView> {
                       ),
                       maxLines: 1),
                   buildInput(
-                      "Password", passController, TextInputType.visiblePassword,
+                    AppLocalizations(context).translate("password"), passController, TextInputType.visiblePassword,
                       suffixIcon: IconButton(
                           onPressed: () => setState(() {
                                 _obscurePass = !_obscurePass;
@@ -90,7 +90,7 @@ class _SigninViewState extends State<SigninView> {
                         padding: const EdgeInsets.all(8.0),
                         child: Icon(Icons.lock_outline, color:  passController.text.isNotEmpty ?  white: grey92),
                       ),),
-                  buildInput("Confirm Password", confirmPassController,
+                  buildInput(AppLocalizations(context).translate("confirm_password"), confirmPassController,
                       TextInputType.visiblePassword,
                       suffixIcon: IconButton(
                           onPressed: () => setState(() {
@@ -118,7 +118,7 @@ class _SigninViewState extends State<SigninView> {
           Padding(
             padding: const EdgeInsets.only(
                 left: 15.0, right: 15.0, top: 10.0, bottom: 10.0),
-            child: button("CONTINUE", bgColor: primary, loading: _loading, colorLoader: white, onTap: () {
+            child: button(AppLocalizations(context).translate("continue"), bgColor: primary, loading: _loading, colorLoader: white, onTap: () {
               if(mailController.text.isNotEmpty && passController.text.isNotEmpty && confirmPassController.text.isNotEmpty){
                 String? emailValidationResult = validMail(mailController.text);
 
