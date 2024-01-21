@@ -136,7 +136,7 @@ class _ForgetPassState extends State<ForgetPass> {
       print(e);
       if(e.toString() == "[firebase_auth/invalid-email] The email address is badly formatted."){
         setState(() {
-          responseValue = "Adresse mail invalide";
+          responseValue = "Invalid email address.";
         });
       }
       if (e.code == 'user-not-found') {

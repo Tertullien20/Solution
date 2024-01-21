@@ -136,12 +136,12 @@ class _SigninViewState extends State<SigninView> {
                           MaterialPageRoute(builder: (context) => InsertNickName(emailAdress:  mailController.text, password:passController.text)));
                     } else{
                       setState(() {
-                        responseValue = "Minimum 6 caractères"; //AppLocalizations(context).translate("min_characters");
+                        responseValue = "Minimum 6 characters"; //AppLocalizations(context).translate("min_characters");
                       });
                     }
                } else {
                     setState(() {
-                      responseValue = "Les mots de passe ne correspondent pas";// AppLocalizations(context).translate("password_mismatch");
+                      responseValue = "Passwords do not match";// AppLocalizations(context).translate("password_mismatch");
                     });
                   }
               }

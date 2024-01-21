@@ -166,7 +166,7 @@ class _InsertNickNameState extends State<InsertNickName> {
             MaterialPageRoute(builder: (context) => const LoginView()),
             (route) => false);
         ScaffoldMessenger.of(context)
-            .showSnackBar(showSnackBar("Inscription réussie"));
+            .showSnackBar(showSnackBar("Successful registration"));
       }
     });
   }
