@@ -82,8 +82,11 @@ flutter:
     - imgs/back_rect.png
     - imgs/menu/leader.png
     - imgs/menu/profile.png
+    - imgs/flag/russian.jfif
     - imgs/menu/earnsat.png
+    - imgs/flag/italian.jfif
     - imgs/splash_screen.jpg
+    - imgs/flag/chinese.jfif
     - imgs/flag/flag_french.png
     - imgs/flag/flag_spanish.png
     - imgs/flag/flag_english.png
