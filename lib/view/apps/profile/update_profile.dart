@@ -95,7 +95,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                             loading = false;
                           });
                           ScaffoldMessenger.of(context).showSnackBar(
-                              showSnackBar(AppLocalizations(context).translate("Profile successfully updated")));
+                              showSnackBar("Profile successfully updated"));
                         },  loading: loading, colorLoader: white),
                       ],
                     ),
