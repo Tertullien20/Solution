@@ -116,7 +116,6 @@ class _UpdateProfileState extends State<UpdateProfile> {
         }
       },
     );
-
   }
 
   Widget buildInput(String text, controller, keyboardType,
