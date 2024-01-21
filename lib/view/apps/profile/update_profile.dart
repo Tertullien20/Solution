@@ -28,8 +28,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
   @override
   Widget build(BuildContext context) {
     final user= Provider.of<UserApp?>(context);
-
-
+    double width= MediaQuery.of(context).size.width;
 
     return StreamBuilder<AppUserData>(
       stream: Database(user!.uid).user,
@@ -69,22 +68,22 @@ class _UpdateProfileState extends State<UpdateProfile> {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: button("CHANGE AVATAR", bgColor: green, width: 150.0,),
+                    child: button(AppLocalizations(context).translate("change_avatar"), bgColor: green, width:AppLocalizations(context).translate("change_avatar").length *10.0 ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        text("Nickname", color: white),
+                        text(AppLocalizations(context).translate("your_nickname"), color: white),
                         space(h: 5.0),
-                        buildInput("NickName", nickNameController, TextInputType.name),
+                        buildInput(AppLocalizations(context).translate("your_nickname"), nickNameController, TextInputType.name),
                         space(h: 25.0),
-                        text("Lightning Address", color: white),
+                        text(AppLocalizations(context).translate("lightning_email"), color: white),
                         space(h: 5.0),
                         buildInput("Lightning Address", emailController, TextInputType.emailAddress),
                         space(h: 25.0),
-                        button("UPDATE PROFILE", bgColor: primary, onTap: (){
+                        button(AppLocalizations(context).translate("update_profile"), bgColor: primary, onTap: (){
                           setState(() {
                             loading = true;
                           });

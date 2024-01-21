@@ -5,14 +5,15 @@ import 'package:solution/view/widgets/loader.dart';
 import 'package:solution/view/widgets/space.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../model/user_app.dart';
+import '../../../provider/language/app_localizations.dart';
 import '../../../services/auth_service.dart';
 import '../../../services/db.dart';
 import '../../widgets/text.dart';
-import '../define_language.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 
 import 'app_bar_profile.dart';
+import 'define_langue_in_app.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -53,7 +54,7 @@ class _ProfileState extends State<Profile> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          text("Nickname", color: white),
+                          text(AppLocalizations(context).translate("my_nickname"), color: white),
                           boldText(userData!.name, color: white, size: 22.0)
                         ],
                       ),
@@ -67,7 +68,7 @@ class _ProfileState extends State<Profile> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          text("Lightning Address", color: white),
+                          text(AppLocalizations(context).translate("lightning_email"), color: white),
                           Row(
                             children: [
                               Image.asset('imgs/vector.png'),
@@ -92,7 +93,7 @@ class _ProfileState extends State<Profile> {
                       space(h: 10.0),
                       InkWell(
                         onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=> const DefineLanguage()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=> const DefineLanguageInApp()));
                         },
                         child: Container(
                           padding: const EdgeInsets.all(15.0),
@@ -143,7 +144,7 @@ class _ProfileState extends State<Profile> {
                     padding: const EdgeInsets.all(20.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [text('Log out', color: white),space(w: 10.0),
+                      children: [text(AppLocalizations(context).translate("log_out"), color: white),space(w: 10.0),
                         Image.asset("imgs/logout.png", color: white)
                       ],
                     ),

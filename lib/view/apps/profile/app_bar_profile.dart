@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:solution/view/apps/profile/update_profile.dart';
+import '../../../provider/language/app_localizations.dart';
 import '../../widgets/text.dart';
 
 class MyProfileAppBar extends StatelessWidget {
@@ -31,7 +32,7 @@ class MyProfileAppBar extends StatelessWidget {
                     },
                     child: Image.asset('imgs/left.png'),
                   ),
-                  text("Go back"),
+                  text(AppLocalizations(context).translate("back")),
                 ],
               ),
             ),

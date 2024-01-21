@@ -77,7 +77,7 @@ class _InsertNickNameState extends State<InsertNickName> {
                     ],
                   ),
                   space(h: 20.0),
-                  buildInput("NickName", nickNameController, TextInputType.text,
+                  buildInput(AppLocalizations(context).translate("your_nickname"), nickNameController, TextInputType.text,
                       maxLines: 1,
                       suffixIcon: IconButton(
                           onPressed: () {

@@ -300,6 +300,58 @@ class AppLocalizations {
       "ru": "Проверьте ваше интернет-соединение и повторите попытку.",
       "zh": "检查您的互联网连接，然后重试。",
     },
+    "lightning_email": {
+      "en": "Lightning adress",
+      "fr": "Adresse mail",
+      "es": "Dirección de correo electrónico",
+      "de": "E-Mail-Adresse eingeben",
+      "it": "Inserisci il tuo indirizzo email",
+      "ru": "Введите ваш адрес электронной почты",
+      "zh": "输入您的电子邮件地址",
+    },
+    "my_nickname": {
+      "en": "Nickname",
+      "fr": "Pseudo",
+      "es": "Apodo",
+      "de": "Spitzname",
+      "it": "Soprannome",
+      "ru": "Псевдоним",
+      "zh": "昵称",
+    },
+    "update_profile": {
+      "en": "Update Profile",
+      "fr": "Mettre à jour le profil",
+      "es": "Actualizar perfil",
+      "de": "Profil aktualisieren",
+      "it": "Aggiorna profilo",
+      "ru": "Обновить профиль",
+      "zh": "更新个人资料",
+    },
+    "change_avatar": {
+      "en": "CHANGE AVATAR",
+      "fr": "CHANGER D'AVATAR",
+      "es": "CAMBIAR AVATAR",
+      "de": "AVATAR ÄNDERN",
+      "it": "CAMBIA AVATAR",
+      "ru": "ИЗМЕНИТЬ АВАТАР",
+      "zh": "更改头像",
+    },
+
+    "log_out": {
+      "en": "Log Out",
+      "fr": "Déconnexion",
+      "es": "Cerrar sesión",
+      "de": "Abmelden",
+      "it": "Esci",
+      "ru": "Выйти",
+      "zh": "退出",
+    },
+
+
+
+
+
+
 
 
 
