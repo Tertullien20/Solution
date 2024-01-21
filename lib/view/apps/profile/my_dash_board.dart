@@ -4,6 +4,8 @@ import '../../widgets/text.dart';
 import 'package:flutter/material.dart';
 import 'package:solution/view/widgets/space.dart';
 import 'package:solution/utils/constants/colors.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 
 class MyDashBoard extends StatefulWidget {
   const MyDashBoard({super.key});
@@ -13,6 +15,8 @@ class MyDashBoard extends StatefulWidget {
 }
 
 class _MyDashBoardState extends State<MyDashBoard> {
+  User? userT= FirebaseAuth.instance.currentUser;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

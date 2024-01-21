@@ -17,7 +17,7 @@ class _SplashState extends State<Splash> {
   @override
   void initState() {
     super.initState();
-    Future.delayed( const Duration(seconds: 4),
+    Future.delayed( const Duration(seconds: 3),
             ()=> Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder:(context) => const Wrapper()), (route) => false));
   }
 

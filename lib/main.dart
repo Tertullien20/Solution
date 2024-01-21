@@ -8,6 +8,7 @@ import 'model/user_app.dart';
 import 'provider/language/language_provider.dart';
 import 'utils/constants/colors.dart';
 
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 

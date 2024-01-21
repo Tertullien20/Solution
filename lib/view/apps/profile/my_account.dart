@@ -23,13 +23,15 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-  final AuthenticationService _auth= AuthenticationService();
-  final userInstance= FirebaseAuth.instance.currentUser!;
+
+  User? userT= FirebaseAuth.instance.currentUser;
 
 
   @override
   Widget build(BuildContext context) {
     final user= Provider.of<UserApp?>(context);
+    User? userCurrent= FirebaseAuth.instance.currentUser;
+
 
     return StreamBuilder<AppUserData>(
       stream: Database(user!.uid).user,
@@ -54,7 +56,7 @@ class _ProfileState extends State<Profile> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           text("Nickname", color: white),
-                         // boldText(userData!.name, color: white, size: 22.0)
+                          boldText(userData!.name, color: white, size: 22.0)
                         ],
                       ),
                     ],
@@ -72,7 +74,7 @@ class _ProfileState extends State<Profile> {
                             children: [
                               Image.asset('imgs/vector.png'),
                               space(w: 5.0),
-                              text("${userInstance.email}", color: white),
+                             // text("${userInstance.email}", color: white),
                             ],
                           )
                         ],
@@ -134,7 +136,7 @@ class _ProfileState extends State<Profile> {
                 Expanded(child: Container()),
                 InkWell(
                   onTap: (){
-                    _auth.signOut();
+                    //_auth.signOut();
                     Navigator.pushAndRemoveUntil(
                         context,
                         MaterialPageRoute(builder: (context) => const FirstView()),
@@ -153,8 +155,13 @@ class _ProfileState extends State<Profile> {
             ),
           );
         }else{
-          return  Center(
-            child: loader(color: white),
+          return  Scaffold(
+            body: Container(
+              color: tertiary,
+              child: Center(
+                child: loader(color: white),
+              ),
+            ),
           );
         }
       },
