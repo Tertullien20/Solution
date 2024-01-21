@@ -141,7 +141,7 @@ class _LoginViewState extends State<LoginView> {
                         }
                       }else {
                         setState(() {
-                          responseValue = 'Tous les champs sont requis. ';
+                          responseValue = AppLocalizations(context).translate("user_not_found_for_email"));
                         });
                       }
                     }),

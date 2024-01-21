@@ -7,6 +7,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:solution/view/widgets/space.dart';
 import 'package:solution/view/widgets/text.dart';
 
+import '../../provider/language/app_localizations.dart';
+
 
 class FirstView extends StatefulWidget {
   const FirstView({Key? key}) : super(key: key);
@@ -80,7 +82,7 @@ class _FirstViewState extends State<FirstView> {
                   child: Padding(
                     padding: const EdgeInsets.only(
                         left: 15.0, right: 15.0, top: 10.0, bottom: 10.0),
-                    child: button('GET STARTED'),
+                    child: button(AppLocalizations(context).translate("get_started")),
                   ),
                 ),
                 InkWell(
@@ -90,7 +92,7 @@ class _FirstViewState extends State<FirstView> {
                   child: Padding(
                     padding: const EdgeInsets.only(
                         left: 15.0, right: 15.0, top: 10.0, bottom: 10.0),
-                    child: button("ALREADY HAVE AN ACCOUNT?",
+                    child: button(AppLocalizations(context).translate("already_have_account"),
                         bgColor: transparent, borderColor: white),
                   ),
                 )

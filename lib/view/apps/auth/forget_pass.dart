@@ -131,17 +131,17 @@ class _ForgetPassState extends State<ForgetPass> {
     try {
       await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
       ScaffoldMessenger.of(context).showSnackBar(
-          showSnackBar("Nous vous avons envoyé un mail pour la récupération."));
+          showSnackBar(AppLocalizations(context).translate("recovery_email_sent")));
     } on FirebaseAuthException catch (e) {
       print(e);
       if(e.toString() == "[firebase_auth/invalid-email] The email address is badly formatted."){
         setState(() {
-          responseValue = "Adresse mail invalide";
+          responseValue = AppLocalizations(context).translate("invalid_email");
         });
       }
       if (e.code == 'user-not-found') {
         ScaffoldMessenger.of(context).showSnackBar(
-            showSnackBar("Pas d'utilisateur trouvé pour ce mail"));
+            showSnackBar(AppLocalizations(context).translate("user_not_found_for_email")));
       }
     }
     setState(() {

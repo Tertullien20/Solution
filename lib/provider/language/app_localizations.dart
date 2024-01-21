@@ -133,7 +133,35 @@ class AppLocalizations {
       "fr": "Adresse e-mail invalide",
       "es": "Dirección de correo electrónico no válida",
       "de": "Ungültige E-Mail-Adresse",
+    },
+    "get_started": {
+      "en": "Get Started",
+      "fr": "Commencer",
+      "es": "Comenzar",
+      "de": "Starten",
+    },
+    "already_have_account": {
+      "en": "ALREADY HAVE AN ACCOUNT?",
+      "fr": "DÉJÀ UN COMPTE ?",
+      "es": "¿YA TIENES UNA CUENTA?",
+      "de": "SCHON EIN KONTO?",
+    },
+    "user_not_found_for_email": {
+      "en": "No user found for this email",
+      "fr": "Pas d'utilisateur trouvé pour ce mail",
+      "es": "No se encontró usuario para este correo electrónico",
+      "de": "Kein Benutzer für diese E-Mail-Adresse gefunden",
+    },
+    "recovery_email_sent": {
+      "en": "We have sent you an email for recovery",
+      "fr": "Nous vous avons envoyé un mail pour la récupération",
+      "es": "Hemos enviado un correo electrónico para la recuperación",
+      "de": "Wir haben Ihnen eine E-Mail zur Wiederherstellung gesendet",
     }
+
+
+
+
 
 
 
