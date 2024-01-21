@@ -347,7 +347,45 @@ class AppLocalizations {
       "zh": "退出",
     },
 
+    "select_language": {
+      "en": "Language",
+      "fr": "Langue",
+      "es": "Idioma",
+      "de": "Sprache",
+      "it": "Lingua",
+      "ru": "Язык",
+      "zh": "语言",
+    },
 
+    "profile": {
+      "en": "Profile",
+      "fr": "Profil",
+      "es": "Perfil",
+      "de": "Profil",
+      "it": "Profilo",
+      "ru": "Профиль",
+      "zh": "个人资料",
+    },
+
+    "leaderboard": {
+      "en": "Leaderboard",
+      "fr": "Classement",
+      "es": "Tablero de clasificación",
+      "de": "Bestenliste",
+      "it": "Classifica",
+      "ru": "Таблица лидеров",
+      "zh": "排行榜",
+    },
+
+    "earn_sats": {
+      "en": "Earn SATs",
+      "fr": "Gagner des SAT",
+      "es": "Ganar SATs",
+      "de": "SATs verdienen",
+      "it": "Guadagna SAT",
+      "ru": "Заработать SAT",
+      "zh": "赚取 SAT",
+    },
 
 
 

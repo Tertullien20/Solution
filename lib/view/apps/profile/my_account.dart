@@ -87,7 +87,7 @@ class _ProfileState extends State<Profile> {
                     children: [
                       Row(
                         children: [
-                          text("Language", color: white),
+                          text(AppLocalizations(context).translate("select_language"), color: white),
                         ],
                       ),
                       space(h: 10.0),
