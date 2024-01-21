@@ -139,7 +139,7 @@ class _LoginViewState extends State<LoginView> {
                         }
                       }else {
                         setState(() {
-                          responseValue = AppLocalizations(context).translate("user_not_found_for_email");
+                          responseValue = "Utilisateur non trouvé";//AppLocalizations(context).translate("user_not_found_for_email");
                         });
                       }
                     }),
