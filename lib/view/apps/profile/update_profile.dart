@@ -68,7 +68,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: button(AppLocalizations(context).translate("change_avatar"), bgColor: green, width:AppLocalizations(context).translate("change_avatar").length *10.0 ),
+                    child: button(AppLocalizations(context).translate("change_avatar"), bgColor: green, width:AppLocalizations(context).translate("change_avatar").length *15.0 ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(15.0),

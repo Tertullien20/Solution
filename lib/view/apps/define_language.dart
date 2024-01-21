@@ -73,7 +73,6 @@ class _DefineLanguageState extends State<DefineLanguage> {
                       "Spanish (Español)", 1, const Locale("es", "ES")),
                   itemLanguage("imgs/flag/flag_french.png", "France (France)",
                       2, const Locale("fr", "FR")),
-
                   itemLanguage("imgs/flag/italian.jfif", "Italian",
                       3, const Locale("it", "IT")),
                   itemLanguage("imgs/flag/russian.jfif", "Russian",
