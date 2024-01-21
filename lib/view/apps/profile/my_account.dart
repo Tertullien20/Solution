@@ -23,21 +23,20 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-
   User? userT= FirebaseAuth.instance.currentUser;
 
 
   @override
   Widget build(BuildContext context) {
     final user= Provider.of<UserApp?>(context);
-    User? userCurrent= FirebaseAuth.instance.currentUser;
-
+    print(userT!.email);
 
     return StreamBuilder<AppUserData>(
       stream: Database(user!.uid).user,
       builder:(context, snapshot){
         if(snapshot.hasData){
           AppUserData? userData= snapshot.data;
+          print(userData);
 
           return Scaffold(
             backgroundColor: secondary,
@@ -74,7 +73,7 @@ class _ProfileState extends State<Profile> {
                             children: [
                               Image.asset('imgs/vector.png'),
                               space(w: 5.0),
-                             // text("${userInstance.email}", color: white),
+                              text("${userT!.email}", color: white),
                             ],
                           )
                         ],
