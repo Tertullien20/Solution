@@ -5,3 +5,26 @@ android   1:721628597741:android:96e952d46342baeda1ebe4
 ios       1:721628597741:ios:acc13664554a5178a1ebe4
 macos     1:721628597741:ios:f7fc48490df33430a1ebe4
 
+DOCUMENTATION:
+MOBILE AND WEB APPLICATION SOLUTION
+
+For the design of this application, I used:
+
+Flutter: a cross-platform framework that allows the development of an application compatible with different platforms such as iOS and Android in one go. The web version is generated simultaneously. It is based on the DART programming language.
+Firebase: It is a Google mobile platform that facilitates the creation of scalable and efficient backends.
+Several packages were used for the development of the mobile application:
+
+Http: This package is used to make HTTP requests in the application. It facilitated requests with Firebase.
+Provider: This package is used to manage the application's state. It provides a simple and effective solution for sharing and managing the state between different views. This is how, for example, when the language is modified somewhere, the entire application is informed.
+Path_provider: This package provides access to the local file system of the application.
+Firebase_auth: This package facilitates the integration of Firebase authentication into the Flutter application. It allowed managing user authentication via the email provider.
+Cloud_firestore: This package integrates Cloud Firestore, the Firebase NoSQL database. It enables real-time data synchronization.
+Firebase_storage: It facilitates the storage and retrieval of files on Firebase Storage, a Firebase service.
+Shared_preferences: It allows storing simple data persistently on the user's device. In this case, it was used for the defined language.
+Font_awesome_flutter: This package provides icons based on the FontAwesome icon library.
+Loading_animation_widget: It offers loading animations for the application. I used it.
+On the Firebase side, security is implemented as follows:
+A. The authentication mechanism is robust. Only logged-in users have access to certain resources.
+B. Passwords are managed and stored by Firebase. The algorithm for the number of characters, email format, and forgotten passwords is ensured by Firebase.
+C. Firebase allows examining audit logs, application usage statistics, and identifies potential security issues. This enables us to stay ahead of the problems users may encounter.
+
